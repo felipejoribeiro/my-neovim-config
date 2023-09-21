@@ -10,7 +10,7 @@ opt.termguicolors = true -- force gui colors
 opt.background = "dark" -- set background to dark
 opt.signcolumn = "yes" -- always show signcolumn
 opt.fileformat = "unix" -- set file format
-opt.clipboard = vim.o.clipboard .. "unnamedplus" -- use system's clipboard
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.shortmess = vim.o.shortmess .. "c" -- don't print short messages
 opt.completeopt = "menu,menuone,noselect" -- complete options
 opt.backspace = "indent,eol,start" -- backspace options
@@ -34,13 +34,14 @@ opt.sidescrolloff = 4 -- make cursor stay in center
 opt.cmdheight = 1 -- number of lines for commands
 opt.showcmd = false -- don't show key pressed
 opt.scl = "yes" -- show cursor line
--- opt.filetype = "detect" -- detect file type
+opt.filetype = "detect" -- detect file type
 
 -- function
 opt.ignorecase = true -- ignore case in search
 opt.smartcase = true -- smartly ignore case
 opt.title = true -- set window title
 opt.splitbelow = true -- default split behaviour
+opt.splitright = true -- default split behaviour
 opt.spell = false -- enable spell
 opt.spelllang = "en,pt,cjk" -- spell languages
 
@@ -50,28 +51,28 @@ opt.updatetime = 300 -- faster completion
 opt.timeoutlen = 400 -- by default 1000ms
 opt.ttimeoutlen = 80 -- makes things faster
 
+-- language-based tab x space configuration
+opt.autoindent = true -- auto indentation
 if vim.bo.filetype == "python" then
 	opt.tabstop = 4 -- number of spaces in tab
 	opt.shiftwidth = 4 -- size of indentation
 	opt.expandtab = true -- make tabs become spaces
-elseif vim.bo.filetype == "yaml" then
+	opt.smartindent = true -- smart indentation
+elseif vim.bo.filetype == "bash" then
 	opt.tabstop = 2 -- number of spaces in tab
 	opt.shiftwidth = 2 -- size of indentation
-	opt.expandtab = true -- make tabs become spaces
+	opt.expandtab = false -- make tabs become spaces
+	opt.smartindent = false -- smart indentation
 else
 	opt.tabstop = 2 -- number of spaces in tab
 	opt.shiftwidth = 2 -- size of indentation
-	opt.expandtab = true -- make tabs become spaces
+	opt.expandtab = true -- make tabs become spaces oi-oi-oi
 	opt.smartindent = true -- smart indentation
 end
 
 -- keyword keys
-opt.iskeyword = opt.iskeyword + "-" -- treat dash separated words as a word text object"
+opt.iskeyword = opt.iskeyword:append("-") -- treat dash separated words as a word text object"
 
 -- loading configs
-require("plugins")
-require("completion")
-require("lsp")
-require("dapp")
-require("maps")
-require("visuals")
+require("core.keymaps")
+require("core.lazy")
