@@ -20,7 +20,7 @@ opt.wrap = false -- disable line wrap by default
 -- backup configuration
 opt.undofile = true -- persistent undo
 opt.undodir = vim.env.HOME .. "/.config/nvim/undodir" -- where to save undo
-opt.viewoptions = "folds,cursor,slash" -- for save state
+opt.viewoptions = "cursor,folds,slash,unix" -- for save state
 opt.backup = false -- disable backup files
 opt.writebackup = false -- prevents writing backup
 opt.swapfile = false -- disable swap file creation
@@ -71,7 +71,7 @@ else
 end
 
 -- keyword keys
-opt.iskeyword = opt.iskeyword:append("-") -- treat dash separated words as a word text object"
+opt.iskeyword = opt.iskeyword + "-" -- treat dash separated words as a word text object"
 
 -- loading configs
 require("core.keymaps")

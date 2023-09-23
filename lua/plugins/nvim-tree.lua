@@ -1,3 +1,4 @@
+require("core.utils")
 return {
   'nvim-tree/nvim-tree.lua',
   dependencies = {
@@ -12,13 +13,17 @@ return {
     glo.loaded_netrw = 1
     glo.loaded_netrwPlugin = 1
 
-    -- customize color of indent marker
-    vim.cmd([[ highlight NvimTreeIndentMarker guifg=#FFFFFF ]])
-
     -- INFO: keymaps
     local keymap = vim.keymap
-    keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
     keymap.set("n", "<leader>E", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+    
+    -- customized colors
+    local highlights = {
+      NvimTreeIndentMarker = {fg = "#00FF00"},
+      NvimTreeNormal = {bg = null},
+    }
+    LOAD_HIGHLIGHTS(highlights)
 
     -- nvim-tree buffer only keymaps
     local function on_attach(bufnr)
@@ -55,9 +60,6 @@ return {
       },
       hijack_cursor = true,
       on_attach = on_attach,
-      git = {
-        ignore = false,
-      },
       diagnostics = { enable = false },
       auto_reload_on_write = true,
       filters = {

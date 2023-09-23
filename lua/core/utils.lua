@@ -20,3 +20,10 @@ MAPKEYBUF = function(mode, lhs, rhs, opts)
 	end
 	vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, options)
 end
+
+-- highlight configuration shortcut
+LOAD_HIGHLIGHTS = function(highlights)
+    for group, settings in pairs(highlights) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
+end

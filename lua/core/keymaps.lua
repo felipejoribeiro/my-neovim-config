@@ -6,8 +6,6 @@ require("core.utils")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local map = MAPKEY
-
 -- show hidden files
 MAPKEY("n", "<leader>s", "<cmd>lua SHOW_HIDDEN()<CR>")
 
