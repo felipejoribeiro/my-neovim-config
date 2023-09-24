@@ -2,7 +2,7 @@ require("core.utils")
 return {
   'nvim-tree/nvim-tree.lua',
   dependencies = {
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
   },
   config = function()
     local glo = vim.g
@@ -15,12 +15,12 @@ return {
 
     -- INFO: keymaps
     local keymap = vim.keymap
-    keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
     keymap.set("n", "<leader>E", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
     
     -- customized colors
     local highlights = {
-      NvimTreeIndentMarker = {fg = "#00FF00"},
+      NvimTreeIndentMarker = {fg = "#CC88FF"},
       NvimTreeNormal = {bg = null},
     }
     LOAD_HIGHLIGHTS(highlights)

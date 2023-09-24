@@ -1,14 +1,35 @@
 require("core.utils")
 return {
   'nvim-treesitter/nvim-treesitter',
+  event = { "BufReadPre", "BufNewFile" },
+  build = { ":TSUpdate" },
+  dependencies = { "windwp/nvim-ts-autotag" },
   config = function()
-    local status, treessiterConf = pcall(require, "nvim-treesitter.configs")
-    if not status then
-      return
-    end
+    local treesitter = require("nvim-treesitter.configs")
 
-    treessiterConf.setup({
-      ensure_installed = { "lua", "python", "javascript" },
+    treesitter.setup({
+      ensure_installed = {
+        "yaml",
+        "html",
+        "css",
+        "lua",
+        "python",
+        "markdown",
+        "markdown_inline",
+        "javascript",
+        "json",
+        "typescript",
+        "tsx",
+        "svelte",
+        "graphql",
+        "bash",
+        "dockerfile",
+        "gitignore",
+        "vim",
+        "vimdoc",
+        "query",
+      },
+      auto_install = true,
       highlight = {
         enable = true,
         disable = { "" },
@@ -18,6 +39,10 @@ return {
       },
       autotag = {
         enable = true,
+      },
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
       },
     })
   end

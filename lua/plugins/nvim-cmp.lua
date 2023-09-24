@@ -1,3 +1,4 @@
+require("core.utils")
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
@@ -76,6 +77,7 @@ return {
         { name = 'luasnip'},
         { name = 'buffer'},
         { name = 'path'},
+        { name = 'cmp_git' },
         { name = 'spell'},
         { name = 'gitlint'}
       }),
@@ -105,13 +107,22 @@ return {
       },
     })
 
-    cmp.setup.filetype('gitcommit', {
-      sources = cmp.config.sources({
-        { name = 'cmp_git' },
-        { name = 'gitlint'},
-        { name = 'spell' },
-        { name = 'buffer' },
-      })
-    })
+    -- setting some visuals
+    local highlits = {
+      CmpItemAbbr = {fg = "#818EFF", bg = "none"},
+      CmpItemKind = {fg = "#818EFF", bg = "none"},
+      CmpItemMenu = {fg = "#818EFF", bg = "none"},
+      CmpItemAbbrMatch = {fg = "#00FF00", bold = true, bg = "none"},
+      CmpItemKindVariable = {fg = "#9CDCFE", bg = "none", bold = true},
+      CmpItemKindFunction = {fg = "#C586C0", bold = true, bg = "none"},
+      CmpItemKindKeyword = {fg = "#D4D4D4", bg = "none", bold = true},
+      CmpItemKindInterface = {link = "CmpItemKindVariable"},
+      CmpItemKindText = {link = "CmpItemKindVariable"},
+      CmpItemKindMethod = {link = "CmpItemKindFunction"},
+      CmpItemKindProperty = {link = "CmpItemKindKeyword"},
+      CmpItemKindUnit = {link = "CmpItemKindKeyword"},
+      PMenu = {bg = "none"},
+    }
+    LOAD_HIGHLIGHTS(highlits)
   end,
 }
