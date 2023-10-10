@@ -3,4 +3,5 @@ return {
   "christoomey/vim-tmux-navigator", -- easy navigation between vim and tmux panes
   "zhimsel/vim-stay", -- save state of nvim buffers, like cursor position
   "mbbill/undotree", -- undo menu
+  "KabbAmine/vCoolor.vim", -- simple color picker
 }
