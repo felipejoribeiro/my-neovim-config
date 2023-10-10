@@ -14,9 +14,8 @@ return {
     glo.loaded_netrwPlugin = 1
 
     -- INFO: keymaps
-    local keymap = vim.keymap
-    keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>E", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+    MAPKEY("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    MAPKEY("n", "<leader>E", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
     
     -- customized colors
     local highlights = {

@@ -55,5 +55,7 @@ return {
     MAPKEY("n", "<leader>fh", "<cmd>Telescope oldfiles<cr>")
     MAPKEY("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
     MAPKEY("n", "<leader>fG", "<cmd>Telescope grep_string<cr>")
+    MAPKEY("n", "<leader>fb", "<cmd>lua require('telescope.builtin').git_branches()<CR>")
+    MAPKEY("n", "<leader>ft", "<cmd>TodoTelescope <CR>")
   end,
 }
