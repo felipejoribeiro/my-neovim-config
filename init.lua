@@ -12,7 +12,7 @@ opt.signcolumn = "yes" -- always show signcolumn
 opt.fileformat = "unix" -- set file format
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.shortmess = vim.o.shortmess .. "c" -- don't print short messages
-opt.completeopt = "menu,menuone,noselect" -- complete options
+opt.completeopt = "menuone,noselect" -- complete options
 opt.backspace = "indent,eol,start" -- backspace options
 opt.mouse = "a" -- enable mouse support
 opt.wrap = false -- disable line wrap by default

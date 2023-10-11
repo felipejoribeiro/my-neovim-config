@@ -5,6 +5,7 @@ return {
     "L3MON4D3/LuaSnip", -- snippets engine
     "petertriho/cmp-git", -- git source for nvim-cmp
     "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+    { "antosha417/nvim-lsp-file-operations", config = true }, -- LSP based file operations
     "hrsh7th/cmp-buffer", -- buffer source for nvim-cmp
     "hrsh7th/cmp-path", -- path source for nvim-cmp
     "hrsh7th/cmp-cmdline", -- cmdline source for nvim-cmp

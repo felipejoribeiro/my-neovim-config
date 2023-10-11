@@ -48,24 +48,3 @@ MAPKEY("n", "<leader>/", ":set hlsearch!<CR>")
 
 -- toogle relative line numbers
 MAPKEY("n", "<leader>sn", "<cmd>set relativenumber!<CR>")
-
--------------------------------------------
--- File type dependent commands
--------------------------------------------
-local function file_type_commands()
-	local ft = vim.bo.filetype
-	if ft == "markdown" then
-		MAPKEYBUF("n", "<leader>j", "<cmd>MarkdownPreviewToggle<CR>", { noremap = true, silent = true })
-	end
-end
-vim.api.nvim_create_autocmd("FileType", { callback = file_type_commands })
-
--------------------------------------------
--- INFO
--------------------------------------------
--- comments:
--- gco, gcO, gcA, gcc, gbc
-
--- info:
--- to turn everything into tabs ==> :%s/  /\t/g
--- to turn everything into tabs ==> set noet ci pi sts=0 sw=2 ts=2
