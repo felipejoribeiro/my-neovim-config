@@ -17,11 +17,8 @@ return {
     end
 
     -- INFO: keymaps
-    vim.api.nvim_echo({ { "LSP loaded" } }, true, {})
     local opts = { silent = true }
     local on_attach = function(_, bufnr)
-      vim.api.nvim_echo({ { "LSP on_attach started" } }, true, {})
-
       opts.desc = "LSP references in telescope"
       MAPKEYBUF(bufnr, "n", "gr", ":Telescope lsp_references<CR>", opts)
 
@@ -56,15 +53,18 @@ return {
 
       opts.desc = "Restart LSP"
       MAPKEYBUF(bufnr, "n", "<leader>rs", ":LspRestart<CR>", opts)
-
-      opts.desc = "format buffer"
-      MAPKEYBUF(bufnr, "n", "gf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- WARNING: install bash-language-server
     lspconfig["bashls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- WARNING: install the godot editor https://github.com/habamax/vim-godot
+    lspconfig["gdscript"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
