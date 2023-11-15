@@ -48,3 +48,6 @@ MAPKEY("n", "<leader>/", ":set hlsearch!<CR>")
 
 -- toogle relative line numbers
 MAPKEY("n", "<leader>sn", "<cmd>set relativenumber!<CR>")
+
+-- repeate last macro
+MAPKEY("n", ",", "@@")
