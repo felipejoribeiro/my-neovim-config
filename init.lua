@@ -51,24 +51,20 @@ opt.updatetime = 300 -- faster completion
 opt.timeoutlen = 400 -- by default 1000ms
 opt.ttimeoutlen = 80 -- makes things faster
 
--- language-based tab x space configuration
+-- add python
+vim.g.python3_host_prog = "/usr/bin/python"
+
+-- autocommand on buffer enter to set tab x space
 opt.autoindent = true -- auto indentation
-if vim.bo.filetype == "python" then
-	opt.tabstop = 4 -- number of spaces in tab
-	opt.shiftwidth = 4 -- size of indentation
-	opt.expandtab = true -- make tabs become spaces
-	opt.smartindent = true -- smart indentation
-elseif vim.bo.filetype == "bash" then
-	opt.tabstop = 2 -- number of spaces in tab
-	opt.shiftwidth = 2 -- size of indentation
-	opt.expandtab = false -- make tabs become spaces
-	opt.smartindent = false -- smart indentation
-else
-	opt.tabstop = 2 -- number of spaces in tab
-	opt.shiftwidth = 2 -- size of indentation
-	opt.expandtab = true -- make tabs become spaces oi-oi-oi
-	opt.smartindent = true -- smart indentation
-end
+vim.cmd([[
+  augroup FileTypeIndent
+    autocmd!
+    autocmd FileType * setlocal tabstop=2 shiftwidth=2 expandtab smartindent
+    autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab smartindent
+    autocmd FileType bash setlocal tabstop=2 shiftwidth=2 expandtab smartindent
+    autocmd FileType cs setlocal tabstop=4 shiftwidth=4 expandtab smartindent
+  augroup END
+]])
 
 -- keyword keys
 opt.iskeyword = opt.iskeyword + "-" -- treat dash separated words as a word text object"

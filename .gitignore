@@ -5,3 +5,4 @@ autoload/
 spell
 local_dap/
 grammar/
+py_env/
