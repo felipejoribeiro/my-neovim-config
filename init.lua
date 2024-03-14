@@ -43,7 +43,7 @@ opt.title = true -- set window title
 opt.splitbelow = true -- default split behaviour
 opt.splitright = true -- default split behaviour
 opt.spell = false -- enable spell
-opt.spelllang = "en,pt,cjk" -- spell languages
+opt.spelllang = "en,pt_BR,cjk" -- spell languages
 
 -- time to wait for commands
 opt.ttimeout = true -- makes things faster
