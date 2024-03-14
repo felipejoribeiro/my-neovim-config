@@ -9,8 +9,8 @@ return {
 		-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
 		"BufReadPre "
 			.. vim.fn.expand("~")
-			.. "/Notes/**.md",
-		"BufNewFile " .. vim.fn.expand("~") .. "/Notes/**.md",
+			.. "/notes/**.md",
+		"BufNewFile " .. vim.fn.expand("~") .. "/notes/**.md",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -63,7 +63,7 @@ return {
 			workspaces = {
 				{
 					name = "Notes",
-					path = "~/Notes",
+					path = "~/notes",
 				},
 			},
 		})
