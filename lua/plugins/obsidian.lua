@@ -2,14 +2,8 @@ return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
 	lazy = true,
-	-- ft = "markdown",
-	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
 	event = {
-		-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-		"BufReadPre "
-			.. vim.fn.expand("~")
-			.. "/notes/**.md",
+		"BufReadPre " .. vim.fn.expand("~") .. "/notes/**.md",
 		"BufNewFile " .. vim.fn.expand("~") .. "/notes/**.md",
 	},
 	dependencies = {
@@ -30,12 +24,16 @@ return {
 			notes_subdir = "notes",
 			new_notes_location = "notes_subdir",
 			daily_notes = {
-				folder = "notes/dailies",
+				folder = "dailies",
 				date_format = "%Y-%m-%d",
 				alias_format = "%B %-d, %Y",
 			},
 			attachments = {
 				img_folder = "data/notes",
+				img_text_func = function(client, path)
+					path = client:vault_relative_path(path) or path
+					return string.format("![%s](../%s)", path.name, path)
+				end,
 			},
 			note_id_func = function(title)
 				-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
@@ -54,7 +52,7 @@ return {
 				return tostring(os.time()) .. "-" .. suffix
 			end,
 			templates = {
-				subdir = "notes/templates",
+				subdir = "data/templates",
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 				-- A map for custom variables, the key should be the variable and the value a function

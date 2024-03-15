@@ -15,6 +15,7 @@ return {
 				"tsserver",
 				"html",
 				"cssls",
+				"zk",
 				"jsonls",
 				"svelte",
 				"lua_ls",
