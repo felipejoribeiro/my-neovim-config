@@ -21,7 +21,7 @@ return {
 		MAPKEY("n", "<leader>os", ":ObsidianSearch<CR>", { silent = true })
 
 		require("obsidian").setup({
-			notes_subdir = "notes",
+			notes_subdir = "fleeting",
 			new_notes_location = "notes_subdir",
 			daily_notes = {
 				folder = "dailies",
@@ -29,7 +29,7 @@ return {
 				alias_format = "%B %-d, %Y",
 			},
 			attachments = {
-				img_folder = "data/notes",
+				img_folder = "assets/notes",
 				img_text_func = function(client, path)
 					path = client:vault_relative_path(path) or path
 					return string.format("![%s](../%s)", path.name, path)
@@ -52,7 +52,7 @@ return {
 				return tostring(os.time()) .. "-" .. suffix
 			end,
 			templates = {
-				subdir = "data/templates",
+				subdir = "assets/templates",
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
 				-- A map for custom variables, the key should be the variable and the value a function
