@@ -24,7 +24,7 @@ return {
 			notes_subdir = "fleeting",
 			new_notes_location = "notes_subdir",
 			daily_notes = {
-				folder = "dailies",
+				folder = "daily",
 				date_format = "%Y-%m-%d",
 				alias_format = "%B %-d, %Y",
 			},
