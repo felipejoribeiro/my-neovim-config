@@ -10,7 +10,7 @@ return {
       " use a custom Markdown style. Must be an absolute path
       " like '/Users/username/markdown.css' or expand('~/markdown.css')
       let g:mkdp_markdown_css = expand('~/.config/nvim/css/github_md_css.css')
-      let g:mkdp_browser = '/usr/bin/qutebrowser'
+      let g:mkdp_browser = '/usr/bin/vimb'
     ]])
 	end,
 }
