@@ -1,18 +1,15 @@
-require("core.utils")
 return {
-  "szw/vim-g",
-  config = function()
-    local os = GET_OS_NAME()
+	"szw/vim-g",
+	config = function()
+		-- INFO: keymaps
+		MAPKEY("v", "<leader>ss", ":Google<CR>")
+		MAPKEY("n", "<leader>ss", ":Google<CR>")
 
-    -- INFO: keymaps
-    MAPKEY("v", "<leader>ss", ":Google<CR>")
-    MAPKEY("n", "<leader>ss", ":Google<CR>")
+		if GET_OS_NAME() ~= "Mac arm" then
+			vim.g.vim_g_open_command = "qutebrowser"
+		end
 
-    if os ~= "Mac" then
-      vim.g.vim_g_open_command = "xdg-open"
-    end
-
-    vim.g.vim_g_python_command = "python3"
-    vim.g.vim_g_query_url = "https://duckduckgo.com/?q="
-  end,
+		vim.g.vim_g_python_command = "python3"
+		vim.g.vim_g_query_url = "https://google.com/search?q="
+	end,
 }

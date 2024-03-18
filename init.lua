@@ -63,6 +63,7 @@ vim.cmd([[
     autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab smartindent
     autocmd FileType bash setlocal tabstop=2 shiftwidth=2 expandtab smartindent
     autocmd FileType cs setlocal tabstop=4 shiftwidth=4 expandtab smartindent
+    autocmd FileType markdown setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab smartindent
   augroup END
 ]])
 

@@ -15,6 +15,7 @@ return {
 	},
 	config = function()
 		-- INFO: keymaps
+		MAPKEY("n", "<leader>on", ":ObsidianNew<CR>", { silent = true })
 		MAPKEY("n", "<leader>od", ":ObsidianDailies<CR>", { silent = true })
 		MAPKEY("n", "<leader>op", ":ObsidianPasteImg<CR>", { silent = true })
 		MAPKEY("n", "<leader>ot", ":ObsidianTags<CR>", { silent = true })
@@ -28,11 +29,30 @@ return {
 				date_format = "%Y-%m-%d",
 				alias_format = "%B %-d, %Y",
 			},
+			completion = {
+				nvim_cmp = true,
+				min_chars = 2,
+			},
+			image_name_func = function()
+				local buffer_file_name = vim.fn.expand("%:t:r")
+				local date = os.date("%Y-%m-%d-%H-%M-%S")
+				return string.format("%s-%s-", buffer_file_name, date)
+			end,
 			attachments = {
-				img_folder = "assets/notes",
+				img_folder = "assets/from_notes",
 				img_text_func = function(client, path)
 					path = client:vault_relative_path(path) or path
-					return string.format("![%s](../%s)", path.name, path)
+					local datePattern = "%d%d%d%d%-%d%d%-%d%d%-%d%d%-%d%d%-%d%d%-"
+					local _, endIndex = path.name:find(datePattern)
+
+					local abbreviation
+					if endIndex then
+						abbreviation = path.name:sub(endIndex + 1)
+					else
+						abbreviation = path.name
+					end
+
+					return string.format("![%s](../%s)", abbreviation, path)
 				end,
 			},
 			note_id_func = function(title)
