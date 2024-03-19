@@ -51,6 +51,10 @@ opt.updatetime = 300 -- faster completion
 opt.timeoutlen = 400 -- by default 1000ms
 opt.ttimeoutlen = 80 -- makes things faster
 
+-- middle east characters right to left paste support
+opt.arabicshape = true
+opt.allowrevins = true
+
 -- add python
 vim.g.python3_host_prog = "/usr/bin/python"
 
