@@ -7,6 +7,13 @@ return {
 	config = function()
 		-- INFO: keymaps
 		MAPKEY("n", "<Leader>j", ":MarkdownPreview<CR>", { silent = true })
+		-- switch the browser between qutebrowser and default browser
+		MAPKEY(
+			"n",
+			"<Leader>jb",
+			":lua vim.g.mkdp_browser = vim.g.mkdp_browser == 'qutebrowser' and '' or 'qutebrowser'<CR>",
+			{ silent = true }
+		)
 
 		vim.g.mkdp_browser_dark = 1
 		vim.g.mkdp_theme = "dark"

@@ -43,7 +43,8 @@ opt.title = true -- set window title
 opt.splitbelow = true -- default split behaviour
 opt.splitright = true -- default split behaviour
 opt.spell = false -- enable spell
-opt.spelllang = "en,pt_BR,cjk" -- spell languages
+opt.spellfile = vim.env.HOME .. "/.config/nvim/spell/language.utf-8.add"
+opt.spelllang = "en,pt" -- spell languages
 
 -- time to wait for commands
 opt.ttimeout = true -- makes things faster
