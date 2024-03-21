@@ -25,10 +25,6 @@ return {
 		}
 
 		-- check if vim is running in mac
-		if GET_OS_NAME() == "Mac" then
-			vim.g.mkdp_browser = "qutebrowser"
-		else
-			vim.g.mkdp_browser = "vimb"
-		end
+		vim.g.mkdp_browser = "qutebrowser"
 	end,
 }

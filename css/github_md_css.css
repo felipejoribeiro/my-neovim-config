@@ -41,6 +41,12 @@ main {
   margin: 15px 0px;
 }
 
+@font-face {
+  font-family: "Frank CurledLamed";
+  src: url(FrankCurledLamed.ttf);
+  unicode-range: U+0590-05FF;
+}
+
 .markdown-body {
   display: flex;
   flex-direction: column;
@@ -52,7 +58,7 @@ main {
   margin: 0;
   color: #e6edf3;
   background-color: #0d1117;
-  font-family: Avenir;
+  font-family: "Avenir LT Std", "Frank CurledLamed";
   font-size: 18px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -419,7 +425,7 @@ main {
     ui-monospace,
     SFMono-Regular,
     SF Mono,
-    Menlo,
+    Meslo,
     Consolas,
     Liberation Mono,
     monospace;
