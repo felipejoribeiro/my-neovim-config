@@ -1,7 +1,7 @@
 return {
-  "sindrets/diffview.nvim",
-  event = "VeryLazy",
+  'sindrets/diffview.nvim',
+  event = 'VeryLazy',
   dependencies = {
-    "nvim-lua/plenary.nvim",
+    'nvim-lua/plenary.nvim',
   },
 }

@@ -1,8 +1,8 @@
-require("core.utils")
+require('core.utils')
 return {
-  "mbbill/undotree",
+  'mbbill/undotree',
   config = function()
     -- INFO: keymaps
-    MAPKEY("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
+    MAPKEY('n', '<leader>u', '<cmd>UndotreeToggle<CR>')
   end,
 }

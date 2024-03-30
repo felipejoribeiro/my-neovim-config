@@ -1,4 +1,4 @@
-require("core.utils")
+require('core.utils')
 return {
   'nvim-tree/nvim-tree.lua',
   dependencies = {
@@ -14,28 +14,34 @@ return {
     glo.loaded_netrwPlugin = 1
 
     -- INFO: keymaps
-    MAPKEY("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    MAPKEY("n", "<leader>E", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    
+    MAPKEY('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+    MAPKEY('n', '<leader>E', '<cmd>NvimTreeCollapse<CR>', { desc = 'Collapse file explorer' }) -- collapse file explorer
+
     -- customized colors
     local highlights = {
-      NvimTreeIndentMarker = {fg = "#CC88FF"},
-      NvimTreeNormal = {bg = null},
+      NvimTreeIndentMarker = { fg = '#CC88FF' },
+      NvimTreeNormal = { bg = nil },
     }
     LOAD_HIGHLIGHTS(highlights)
 
     -- nvim-tree buffer only keymaps
     local function on_attach(bufnr)
-      local api = require "nvim-tree.api"
+      local api = require('nvim-tree.api')
       local function opts(desc)
-        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        return {
+          desc = 'nvim-tree: ' .. desc,
+          buffer = bufnr,
+          noremap = true,
+          silent = true,
+          nowait = true,
+        }
       end
       -- default mappings
       api.config.mappings.default_on_attach(bufnr)
       -- custom mappings
-      vim.keymap.set("n", "t", api.node.open.tab, opts("Open: New Tab"))
-      vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
-      vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+      vim.keymap.set('n', 't', api.node.open.tab, opts('Open: New Tab'))
+      vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+      vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
     end
 
     -- configure nvim-tree
@@ -43,19 +49,19 @@ return {
       -- change folder state icons
       renderer = {
         indent_markers = {
-          enable = true
+          enable = true,
         },
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = "",
-              arrow_open = "",
+              arrow_closed = '',
+              arrow_open = '',
             },
           },
         },
       },
-      tab ={
-        sync = { open = true, close = true }
+      tab = {
+        sync = { open = true, close = true },
       },
       hijack_cursor = true,
       on_attach = on_attach,
@@ -67,5 +73,5 @@ return {
         exclude = {},
       },
     })
-  end
+  end,
 }
