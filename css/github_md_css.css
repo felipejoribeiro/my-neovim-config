@@ -1179,3 +1179,118 @@ main {
 .markdown-body .markdown-alert.markdown-alert-caution .markdown-alert-title {
   color: #00f111;
 }
+
+.dialog-text {
+  margin-left: 5px;
+  font-size: 0.7em;
+}
+
+.dialog-text p {
+  margin: 0;
+}
+
+.action-text {
+  width: 100%;
+  max-height: 50%;
+  overflow: hidden;
+  font-size: 0.6em;
+  margin-top: 18px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-bottom: dashed 1px;
+}
+
+.time {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-size: 10px;
+  color: gray;
+}
+
+.story-board {
+  display: flex;
+  min-height: 300px;
+  min-width: 900px;
+}
+
+.story-board > div {
+  border: solid 1px;
+  height: 180px;
+  width: 33.3333%;
+  overflow: hidden;
+}
+
+.story-board > div > .img11 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, 222);
+  border-radius: 0;
+}
+
+.story-board > div > .img21 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, 222);
+  border-radius: 0;
+}
+
+.story-board > div > .img31 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, 222);
+  border-radius: 0;
+}
+
+.story-board > div > .img12 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, -16);
+  border-radius: 0;
+}
+
+.story-board > div > .img22 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, -16);
+  border-radius: 0;
+}
+
+.story-board > div > .img32 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, -16);
+  border-radius: 0;
+}
+
+.story-board > div > .img13 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, -255);
+  border-radius: 0;
+}
+
+.story-board > div > .img23 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, -255);
+  border-radius: 0;
+}
+
+.story-board > div > .img33 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, -255);
+  border-radius: 0;
+}
+
+.story-board > span {
+  position: absolute;
+  top: 185px;
+  left: 33.33%;
+  height: 50%;
+  width: 32%;
+}
+
+.story-board > span:first-of-type {
+  left: 00%;
+}
+
+.story-board > span:last-of-type {
+  left: 66.66%;
+}
+
+.story-board {
+  wrap: true;
+  position: relative;
+  width: 100%;
+  border: solid 1px;
+  margin-bottom: 1em;
+}
+
+.story-board + .story-board {
+  margin-top: -1em;
+  border-bottom: solid 1px;
+}

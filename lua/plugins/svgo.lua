@@ -1,6 +1,7 @@
 return {
   'felipejoribeiro/svgo.nvim',
   dependencies = { 'rcarriga/nvim-notify' },
+  dir = '~/work/personal/svgo.nvim',
   keys = function()
     local svgo = require('svgo')
     return {
