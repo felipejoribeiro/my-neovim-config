@@ -369,7 +369,7 @@ main {
 }
 
 .markdown-body h5 {
-  font-weight: 600;
+  font-weight: 608;
   font-size: 0.875em;
 }
 
@@ -379,9 +379,14 @@ main {
   color: #848d97;
 }
 
-.markdown-body p {
-  margin-top: 0;
-  margin-bottom: 10px;
+.action-text > p {
+  border-left: 1px solid #474747;
+  padding: 0 0.5em;
+  margin: 0;
+}
+.action-text > .sound {
+  color: #00fb82;
+  border-left: 1px solid #00fb82;
 }
 
 .markdown-body blockquote {
@@ -1189,15 +1194,25 @@ main {
   margin: 0;
 }
 
+.time + .dialog-text {
+  margin-top: 18px;
+}
+
 .action-text {
   width: 100%;
   max-height: 50%;
   overflow: hidden;
   font-size: 0.6em;
-  margin-top: 18px;
   margin-left: 5px;
   margin-bottom: 5px;
-  border-bottom: dashed 1px;
+}
+
+.time + .action-text {
+  margin-top: 18px;
+}
+
+.action-text + .dialog-text {
+  border-top: dashed 1px #4c4d49;
 }
 
 .time {
@@ -1206,6 +1221,12 @@ main {
   left: 5px;
   font-size: 10px;
   color: gray;
+}
+
+.time:before {
+  content: ">";
+  color: #a7a7a7;
+  margin-right: 0.5em;
 }
 
 .story-board {
@@ -1283,10 +1304,9 @@ main {
 }
 
 .story-board {
-  wrap: true;
+  text-wrap: wrap;
   position: relative;
   width: 100%;
-  border: solid 1px;
   margin-bottom: 1em;
 }
 
