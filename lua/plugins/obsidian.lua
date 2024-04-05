@@ -24,6 +24,7 @@ return {
     require('obsidian').setup({
       notes_subdir = 'fleeting',
       new_notes_location = 'notes_subdir',
+      preferred_link_style = 'markdown',
       daily_notes = {
         folder = 'daily',
         date_format = '%Y-%m-%d',

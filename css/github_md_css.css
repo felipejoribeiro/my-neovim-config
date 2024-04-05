@@ -1,5 +1,3 @@
-/*dark*/
-
 * {
   margin: 0;
   padding: 0;
@@ -377,16 +375,6 @@ main {
   font-weight: 600;
   font-size: 0.85em;
   color: #848d97;
-}
-
-.action-text > p {
-  border-left: 1px solid #474747;
-  padding: 0 0.5em;
-  margin: 0;
-}
-.action-text > .sound {
-  color: #00fb82;
-  border-left: 1px solid #00fb82;
 }
 
 .markdown-body blockquote {
@@ -1198,29 +1186,127 @@ main {
   margin-top: 18px;
 }
 
-.action-text {
-  width: 100%;
-  max-height: 50%;
-  overflow: hidden;
-  font-size: 0.6em;
-  margin-left: 5px;
-  margin-bottom: 5px;
+.image-container {
+  display: flex;
+  min-height: 140px;
+  min-width: 900px;
 }
 
-.time + .action-text {
-  margin-top: 18px;
+.image-container > div {
+  border: solid 1px;
+  height: 180px;
+  width: 33.3333%;
+  overflow: hidden;
+}
+
+.image-container > div > .img11 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, 225);
+  border-radius: 0;
+}
+
+.image-container > div > .img21 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, 225);
+  border-radius: 0;
+}
+
+.image-container > div > .img31 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, 225);
+  border-radius: 0;
+}
+
+.image-container > div > .img12 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, -16);
+  border-radius: 0;
+}
+
+.image-container > div > .img22 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, -16);
+  border-radius: 0;
+}
+
+.image-container > div > .img32 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, -16);
+  border-radius: 0;
+}
+
+.image-container > div > .img13 {
+  transform: matrix(3.3, 0, 0, 3.3, 325, -255);
+  border-radius: 0;
+}
+
+.image-container > div > .img23 {
+  transform: matrix(3.3, 0, 0, 3.3, 0, -255);
+  border-radius: 0;
+}
+
+.image-container > div > .img33 {
+  transform: matrix(3.3, 0, 0, 3.3, -325, -255);
+  border-radius: 0;
+}
+
+.text-container {
+  display: flex;
+  width: 100%;
+  padding: 0em;
+}
+
+.text-container > span {
+  width: 33.333%;
+  padding: 0em;
+  margin: 0em;
+}
+
+.story-board {
+  min-width: 900px;
+  text-wrap: wrap;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.action-text {
+  margin: 0;
+  padding: 0;
+  font-size: 0.6em;
 }
 
 .action-text + .dialog-text {
   border-top: dashed 1px #4c4d49;
 }
 
-.time {
-  position: absolute;
-  top: 0;
-  left: 5px;
-  font-size: 10px;
-  color: gray;
+.action-text > p {
+  border-left: 1px solid #474747;
+  padding: 0 0.5em;
+  margin: 0;
+}
+
+.action-text > .interaction {
+  color: #3efff0;
+  border-left: 1px solid #3efff0;
+}
+
+.action-text > .sound {
+  color: #c38cff;
+  border-left: 1px solid #c38cff;
+}
+
+.action-text > .camera-action {
+  color: #00fb82;
+  border-left: 1px solid #00fb82;
+}
+
+.action-text > .interaction:before {
+  content: "⛯";
+  margin-right: 0.4em;
+}
+
+.action-text > .camera-action:before {
+  content: "@";
+  margin-right: 0.4em;
+}
+
+.action-text > .sound:before {
+  content: "¶ ";
+  margin-right: 0.4em;
 }
 
 .time:before {
@@ -1229,88 +1315,12 @@ main {
   margin-right: 0.5em;
 }
 
-.story-board {
-  display: flex;
-  min-height: 300px;
-  min-width: 900px;
-}
-
-.story-board > div {
-  border: solid 1px;
-  height: 180px;
-  width: 33.3333%;
-  overflow: hidden;
-}
-
-.story-board > div > .img11 {
-  transform: matrix(3.3, 0, 0, 3.3, 325, 222);
-  border-radius: 0;
-}
-
-.story-board > div > .img21 {
-  transform: matrix(3.3, 0, 0, 3.3, 0, 222);
-  border-radius: 0;
-}
-
-.story-board > div > .img31 {
-  transform: matrix(3.3, 0, 0, 3.3, -325, 222);
-  border-radius: 0;
-}
-
-.story-board > div > .img12 {
-  transform: matrix(3.3, 0, 0, 3.3, 325, -16);
-  border-radius: 0;
-}
-
-.story-board > div > .img22 {
-  transform: matrix(3.3, 0, 0, 3.3, 0, -16);
-  border-radius: 0;
-}
-
-.story-board > div > .img32 {
-  transform: matrix(3.3, 0, 0, 3.3, -325, -16);
-  border-radius: 0;
-}
-
-.story-board > div > .img13 {
-  transform: matrix(3.3, 0, 0, 3.3, 325, -255);
-  border-radius: 0;
-}
-
-.story-board > div > .img23 {
-  transform: matrix(3.3, 0, 0, 3.3, 0, -255);
-  border-radius: 0;
-}
-
-.story-board > div > .img33 {
-  transform: matrix(3.3, 0, 0, 3.3, -325, -255);
-  border-radius: 0;
-}
-
-.story-board > span {
-  position: absolute;
-  top: 185px;
-  left: 33.33%;
-  height: 50%;
-  width: 32%;
-}
-
-.story-board > span:first-of-type {
-  left: 00%;
-}
-
-.story-board > span:last-of-type {
-  left: 66.66%;
-}
-
-.story-board {
-  text-wrap: wrap;
-  position: relative;
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.story-board + .story-board {
-  margin-top: -1em;
-  border-bottom: solid 1px;
+.markdown-body p.time {
+  border-left: 1px solid #474747;
+  padding-top: 0.5em;
+  padding-left: 5px;
+  font-size: 10px;
+  color: gray;
+  padding-bottom: 0.5em;
+  margin-bottom: 0em;
 }
