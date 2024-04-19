@@ -3,11 +3,12 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local lualine = require('lualine')
-    local lazy_status = require('lazy.status')
 
     lualine.setup({
       sections = {
-        lualine_b = {},
+        lualine_b = {
+          { 'branch', icon = '' },
+        },
         lualine_x = {
           { 'encoding' },
         },

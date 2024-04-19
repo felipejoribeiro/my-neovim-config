@@ -46,7 +46,9 @@ return {
 
     -- configure nvim-tree
     nvimtree.setup({
-      -- change folder state icons
+      view = {
+        relativenumber = true,
+      },
       renderer = {
         indent_markers = {
           enable = true,
@@ -60,6 +62,13 @@ return {
           },
         },
       },
+      actions = {
+        open_file = {
+          window_picker = {
+            enable = false,
+          },
+        },
+      },
       tab = {
         sync = { open = true, close = true },
       },
@@ -67,9 +76,14 @@ return {
       on_attach = on_attach,
       diagnostics = { enable = false },
       auto_reload_on_write = true,
+      git = {
+        ignore = false,
+      },
       filters = {
         dotfiles = true,
-        custom = {},
+        custom = {
+          '.DS_Store',
+        },
         exclude = {},
       },
     })

@@ -13,6 +13,7 @@ return {
     'rafamadriz/friendly-snippets', -- good snippets
     'saadparwaiz1/cmp_luasnip', -- snippets source for nvim-cmp
     'onsails/lspkind.nvim', -- icons for nvim-cmp
+    'windwp/nvim-ts-autotag', -- autopairs for nvim-cmp
   },
   event = 'InsertEnter',
   config = function()
