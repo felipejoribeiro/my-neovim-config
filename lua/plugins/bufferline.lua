@@ -5,7 +5,7 @@ return {
   opts = {
     options = {
       mode = 'tabs',
-      buffer_close_icon = '⛌',
+      buffer_close_icon = '|',
     },
   },
 }

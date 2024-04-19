@@ -6,10 +6,9 @@ return {
     MAPKEY('i', '<C-k>', "copilot#Accept('')", { expr = true, silent = true })
 
     -- load highlights
-    local baseHl = {
+    LOAD_HIGHLIGHTS({
       CopilotSuggestion = { fg = '#CC88FF' },
-    }
-    LOAD_HIGHLIGHTS(baseHl)
+    })
 
     vim.g.copilot_node_command = '~/.nvm/versions/node/v16.15.0/bin/node'
     vim.g.copilot_no_tab_map = true

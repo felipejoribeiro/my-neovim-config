@@ -24,7 +24,6 @@ return {
       dark_mode = true,
     }
 
-    -- check if vim is running in mac
     vim.g.mkdp_browser = 'qutebrowser'
   end,
 }

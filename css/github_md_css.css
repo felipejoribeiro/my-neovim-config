@@ -46,6 +46,7 @@ main {
 }
 
 .markdown-body {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -165,11 +166,6 @@ main {
   box-sizing: content-box;
   background-color: #0d1117;
   border-radius: 6px;
-}
-
-.hljs {
-  width: 100%;
-  max-width: 900px;
 }
 
 .markdown-body code,
@@ -787,8 +783,10 @@ main {
   margin: 0;
   width: 100%;
   font-size: 85%;
+  background-color: #000000;
   white-space: break-spaces;
   border-radius: 6px;
+  border: 1px dashed #637080;
 }
 
 .markdown-body code br,
@@ -839,13 +837,21 @@ main {
   align-self: center;
 }
 
+.hljs {
+  width: 80vw;
+  max-width: 900px;
+}
+
 .markdown-body pre code,
 .markdown-body pre tt {
-  display: inline;
-  max-width: auto;
   padding: 0;
   margin: 0;
-  overflow: visible;
+
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+
   line-height: inherit;
   word-wrap: normal;
   background-color: transparent;
@@ -1294,16 +1300,6 @@ main {
   color: #4c4d49;
 }
 
-.dialog-text::after {
-  content: "DIALOGUE";
-  font-size: 1em;
-  color: #4c4d49;
-  transform: rotate(90deg);
-  position: absolute;
-  right: -3em;
-  top: 2em;
-}
-
 .action-text {
   margin: 0;
   padding: 0;
@@ -1375,4 +1371,15 @@ main {
   color: gray;
   padding-bottom: 0.5em;
   margin-bottom: 0em;
+}
+
+img[src*="#left"] {
+  float: left;
+}
+img[src*="#right"] {
+  float: right;
+}
+img[src*="#center"] {
+  display: block;
+  margin: auto;
 }

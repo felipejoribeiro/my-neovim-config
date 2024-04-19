@@ -56,8 +56,13 @@ opt.ttimeoutlen = 80 -- makes things faster
 opt.arabicshape = true
 opt.allowrevins = true
 
--- add python
+-- add python3 host prog
 vim.g.python3_host_prog = '/usr/bin/python'
+
+-- conceal level for markdown
+vim.g.vim_markdown_frontmatter = 1
+vim.g.vim_markdown_conceal = 2
+opt.conceallevel = 1
 
 -- autocommand on buffer enter to set tab x space
 opt.autoindent = true -- auto indentation
@@ -71,6 +76,19 @@ vim.cmd([[
     autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
   augroup END
 ]])
+
+-- diagnostic signs
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  severity_sort = true,
+})
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+end
 
 -- keyword keys
 opt.iskeyword = opt.iskeyword + '-' -- treat dash separated words as a word text object"

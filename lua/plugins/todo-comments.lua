@@ -7,6 +7,7 @@ return {
       TODO = { icon = ' ', color = 'info' },
       HACK = { icon = ' ', color = '#f06caa' },
       WARN = { icon = ' ', color = '#ffb86c', alt = { 'WARNING', 'XXX' } },
+      INFO = { icon = ' ', color = '#C0E8FF', alt = { 'INFO' } },
     },
   },
 }
