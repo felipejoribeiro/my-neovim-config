@@ -21,6 +21,7 @@ if ok then
   lazy.setup({
     { import = 'plugins' },
     { import = 'plugins.lsp' },
+    { import = 'plugins.debug' },
     { import = 'plugins.language-specific' },
   }, {
     checker = {

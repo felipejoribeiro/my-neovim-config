@@ -57,7 +57,7 @@ opt.arabicshape = true
 opt.allowrevins = true
 
 -- add python3 host prog
-vim.g.python3_host_prog = '/usr/bin/python'
+vim.g.python3_host_prog = '/usr/bin/python3'
 
 -- conceal level for markdown
 vim.g.vim_markdown_frontmatter = 1

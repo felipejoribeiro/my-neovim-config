@@ -76,9 +76,6 @@ return {
       on_attach = on_attach,
       diagnostics = { enable = false },
       auto_reload_on_write = true,
-      git = {
-        ignore = false,
-      },
       filters = {
         dotfiles = true,
         custom = {

@@ -4,7 +4,7 @@ return {
     require('nvim-web-devicons').setup({
       override = {
         txt = {
-          icon = '𖣯',
+          icon = '',
           color = '#FFFFFF',
           cterm_color = '65',
           name = 'Text',

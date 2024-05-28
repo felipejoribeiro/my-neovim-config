@@ -29,6 +29,7 @@ return {
         folder = 'daily',
         date_format = '%Y-%m-%d',
         alias_format = '%B %-d, %Y',
+        template = 'daily',
       },
       completion = {
         nvim_cmp = true,
@@ -38,6 +39,17 @@ return {
         local buffer_file_name = vim.fn.expand('%:t:r')
         local date = os.date('%Y-%m-%d-%H-%M-%S')
         return string.format('%s-%s-', buffer_file_name, date)
+      end,
+      note_id_func = function(title)
+        local suffix = ''
+        if title ~= nil then
+          suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+        else
+          for _ = 1, 4 do
+            suffix = suffix .. string.char(math.random(65, 90))
+          end
+        end
+        return tostring(os.time()) .. '-' .. suffix
       end,
       attachments = {
         img_folder = 'assets/from_notes',
@@ -60,7 +72,6 @@ return {
         subdir = 'assets/templates',
         date_format = '%Y-%m-%d',
         time_format = '%H:%M',
-        -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
       },
       workspaces = {
