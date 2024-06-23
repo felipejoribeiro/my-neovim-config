@@ -9,7 +9,6 @@ return {
       typescript = { 'eslint' },
       typescriptreact = { 'eslint' },
       javascriptreact = { 'eslint' },
-      gradle = { 'ktlint' },
       svelte = { 'eslint' },
       python = { 'flake8' }, -- Install the tool with pip! (flake8 package)
       csharp = { 'sonarlint-language-server' },

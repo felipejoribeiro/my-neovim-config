@@ -29,6 +29,7 @@ return {
       ensure_installed = {
         'prettier',
         'stylua',
+        'dcm',
         'isort',
         'black',
         'eslint',
