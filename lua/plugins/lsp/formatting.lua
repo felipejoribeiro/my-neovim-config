@@ -29,7 +29,7 @@ return {
         lua = { 'stylua' },
         python = { 'black', 'isort' },
       },
-      format_on_save = {
+      format_after_save = {
         lsp_fallback = true,
         async = true,
         timeout_ms = 500,

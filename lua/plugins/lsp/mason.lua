@@ -31,7 +31,7 @@ return {
         'stylua',
         'isort',
         'black',
-        'eslint_d',
+        'eslint',
         'pylint',
       },
       automatic_installation = true,

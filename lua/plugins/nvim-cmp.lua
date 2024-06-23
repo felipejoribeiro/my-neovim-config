@@ -79,9 +79,9 @@ return {
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
-        { name = 'cmp_git' },
-        { name = 'spell' },
-        { name = 'gitlint' },
+        -- { name = 'cmp_git' },
+        -- { name = 'spell' },
+        -- { name = 'gitlint' },
       }),
       -- configure lspkind for vs-code like pictograms in completion menu
       formatting = {

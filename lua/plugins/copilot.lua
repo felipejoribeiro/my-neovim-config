@@ -3,7 +3,7 @@ return {
   'github/copilot.vim',
   config = function()
     -- INFO: keymaps
-    MAPKEY('i', '<C-k>', "copilot#Accept('')", { expr = true, silent = true })
+    MAPKEY('i', '<a-k>', "copilot#Accept('')", { expr = true, silent = true })
 
     -- load highlights
     LOAD_HIGHLIGHTS({

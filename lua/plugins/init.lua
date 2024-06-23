@@ -5,4 +5,5 @@ return {
   'KabbAmine/vCoolor.vim', -- simple color picker
   'tpope/vim-fugitive', -- git commands inside nvim
   'styled-components/vim-styled-components', -- styled components syntax highlight
+  'ekickx/clipboard-image.nvim', -- paste images from clipboard
 }

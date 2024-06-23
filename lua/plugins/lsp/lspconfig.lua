@@ -70,6 +70,14 @@ return {
     })
 
     lspconfig['tsserver'].setup({
+      init_options = {
+        preferences = { includeCompletionsForModuleExports = false },
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig['gradle_ls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })

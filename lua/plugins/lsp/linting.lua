@@ -5,11 +5,12 @@ return {
     local lint = require('lint')
 
     lint.linters_by_ft = {
-      javascript = { 'eslint_d' },
-      typescript = { 'eslint_d' },
-      typescriptreact = { 'eslint_d' },
-      javascriptreact = { 'eslint_d' },
-      svelte = { 'eslint_d' },
+      javascript = { 'eslint' },
+      typescript = { 'eslint' },
+      typescriptreact = { 'eslint' },
+      javascriptreact = { 'eslint' },
+      gradle = { 'ktlint' },
+      svelte = { 'eslint' },
       python = { 'flake8' }, -- Install the tool with pip! (flake8 package)
       csharp = { 'sonarlint-language-server' },
     }
