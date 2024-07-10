@@ -7,8 +7,10 @@ return {
       code_actions = { show_server_name = true },
       definition = {
         keys = {
-          edit = 'o',
-          tabe = 't',
+          edit = '<c-o>',
+          split = '<c-s>',
+          vsplit = '<c-v>',
+          tabe = '<c-t>',
         },
       },
     })

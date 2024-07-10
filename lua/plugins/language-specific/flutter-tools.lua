@@ -26,6 +26,8 @@ return {
 
       opts.desc = 'See available code actions'
       MAPKEYBUF(bufnr, 'n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
+      opts.desc = 'See available code actions selection'
+      MAPKEYBUF(bufnr, 'v', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opts)
 
       opts.desc = 'Smart rename'
       MAPKEYBUF(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
@@ -44,6 +46,9 @@ return {
 
       opts.desc = 'Restart LSP'
       MAPKEYBUF(bufnr, 'n', '<leader>rs', ':LspRestart<CR>', opts)
+
+      opts.desc = 'toggle LSP terminal'
+      MAPKEYBUF(bufnr, 'n', '<leader>b', ':Lspsaga term_toggle<CR>', opts)
     end
 
     require('flutter-tools').setup({
@@ -58,13 +63,27 @@ return {
           }
         end,
       },
+      closing_tags = {
+        prefix = ' > ', -- character to use for close tag e.g. > Widget
+        enabled = true, -- set to false to disable
+      },
       dev_log = {
         enabled = true,
         open_cmd = 'tabedit',
       },
       experimental = { lsp_derive_paths = true },
-      widget_guides = { enabled = true },
+      widget_guides = { enabled = true, debug = true },
       lsp = {
+        color = {
+          enabled = true,
+          background = true,
+          background_color = { r = 19, g = 17, b = 24 },
+          virtual_text = false,
+        },
+        settings = {
+          showTodos = true,
+          renameFilesWithClasses = 'prompt',
+        },
         on_attach = On_attach,
         capabilities = Capabilities,
       },

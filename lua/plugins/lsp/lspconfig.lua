@@ -52,6 +52,9 @@ return {
 
       opts.desc = 'Restart LSP'
       MAPKEYBUF(bufnr, 'n', '<leader>rs', ':LspRestart<CR>', opts)
+
+      opts.desc = 'toggle LSP terminal'
+      MAPKEYBUF(bufnr, 'n', '<leader-b>', ':Lspsaga term_toggle<CR>', opts)
     end
 
     local capabilities =
