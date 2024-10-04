@@ -14,6 +14,15 @@ return {
       end
     end
 
+    vim.fn.sign_define(
+      'DapBreakpoint',
+      { text = '⬢', texthl = 'cyan', linehl = '', numhl = 'cyan' }
+    )
+    vim.fn.sign_define(
+      'DapStopped',
+      { text = '▶', texthl = 'Green', linehl = 'ColorColumn', numhl = 'Green' }
+    )
+
     -- INFO: Keymaps
     MAPKEY('n', '<leader>db', ':lua require"dap".toggle_breakpoint()<CR>', {})
     MAPKEY('n', '<leader>dc', ':lua require"dap".continue()<CR>', {})

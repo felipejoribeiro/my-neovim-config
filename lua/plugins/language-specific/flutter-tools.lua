@@ -53,6 +53,7 @@ return {
 
     require('flutter-tools').setup({
       debugger = {
+        exception_breakpoints = {},
         enabled = true,
         run_via_dap = true,
         register_configurations = function(_)
@@ -68,7 +69,8 @@ return {
         enabled = true, -- set to false to disable
       },
       dev_log = {
-        enabled = true,
+        notify_errors = true,
+        enabled = false,
         open_cmd = 'tabedit',
       },
       experimental = { lsp_derive_paths = true },

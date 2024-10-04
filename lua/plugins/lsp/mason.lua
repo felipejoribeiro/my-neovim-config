@@ -5,6 +5,7 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   config = function()
+    -- All packages are installed in ~/.local/share/nvim/mason
     local mason = require('mason')
     local mason_lspconfig = require('mason-lspconfig')
     local mason_tool_installer = require('mason-tool-installer')
@@ -12,7 +13,7 @@ return {
     mason.setup({})
     mason_lspconfig.setup({
       ensure_installed = {
-        'tsserver',
+        'ts_ls',
         'html',
         'cssls',
         'zk',
@@ -21,7 +22,6 @@ return {
         'lua_ls',
         'emmet_ls',
         'pyright',
-        'jedi_language_server',
       },
       automatic_installation = true,
     })

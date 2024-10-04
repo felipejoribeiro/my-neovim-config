@@ -9,6 +9,7 @@ return {
   config = function()
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    local util = require('lspconfig.util')
 
     local signs = { Error = ' ', Warn = ' ', Hint = 'ﴞ ', Info = ' ' }
     for type, icon in pairs(signs) do
@@ -54,7 +55,7 @@ return {
       MAPKEYBUF(bufnr, 'n', '<leader>rs', ':LspRestart<CR>', opts)
 
       opts.desc = 'toggle LSP terminal'
-      MAPKEYBUF(bufnr, 'n', '<leader-b>', ':Lspsaga term_toggle<CR>', opts)
+      MAPKEYBUF(bufnr, 'n', '<leader>b', ':Lspsaga term_toggle<CR>', opts)
     end
 
     local capabilities =
@@ -72,7 +73,7 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig['tsserver'].setup({
+    lspconfig['ts_ls'].setup({
       init_options = {
         preferences = { includeCompletionsForModuleExports = false },
       },
@@ -100,9 +101,13 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig['jedi_language_server'].setup({
+    lspconfig['pyright'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      before_init = function(_, config)
+        config.settings.python.analysis.stubPath =
+          vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'python-type-stubs')
+      end,
     })
 
     lspconfig['csharp_ls'].setup({
@@ -111,19 +116,41 @@ return {
     })
 
     lspconfig['svelte'].setup({
+      filetypes = { 'svelte' },
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
 
         vim.api.nvim_create_autocmd('BufWritePost', {
-          pattern = { '*.js', '*.ts' },
+          pattern = { '*.js', '*.ts', '*.svelte' },
           callback = function(ctx)
-            if client.name == 'svelte' then
+            if client.name == 'svelte' or vim.bo[bufnr].filetype == 'svelte' then
               client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
             end
           end,
         })
       end,
+    })
+
+    lspconfig['gopls'].setup({
+      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+        },
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig['rust_analyzer'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
     })
 
     lspconfig['lua_ls'].setup({
