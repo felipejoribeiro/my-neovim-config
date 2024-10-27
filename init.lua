@@ -75,6 +75,8 @@ vim.cmd([[
     autocmd FileType cs setlocal tabstop=4 shiftwidth=4 expandtab smartindent
     autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab smartindent
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab smartindent
+    autocmd FileType make setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+    autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
   augroup END
 ]])
 

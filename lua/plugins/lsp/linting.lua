@@ -13,12 +13,13 @@ return {
       python = { 'flake8' }, -- Install the tool with pip! (flake8 package)
       csharp = { 'sonarlint-language-server' },
       go = { 'golangci-lint' },
+      make = { 'checkmake' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
 
     vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost' }, {
-      pattern = { '*.ts', '*.tsx', '*.js', '*.jsx', '*.svelte', '*.py' },
+      pattern = { '*.ts', '*.tsx', '*.js', '*.jsx', '*.svelte', '*.py', 'Makefile' },
       group = lint_augroup,
       callback = function()
         lint.try_lint()

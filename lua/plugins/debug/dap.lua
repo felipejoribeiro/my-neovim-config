@@ -1,5 +1,12 @@
 return {
   'mfussenegger/nvim-dap',
+  dependencies = {
+    'leoluz/nvim-dap-go',
+    'mfussenegger/nvim-dap-python',
+    'rcarriga/nvim-dap-ui',
+    'nvim-neotest/nvim-nio',
+    'williamboman/mason.nvim',
+  },
   config = function()
     -- source all lua files in adapters folder
     local files_in_adapters = vim.fn.globpath(
@@ -31,5 +38,6 @@ return {
     MAPKEY('n', '<leader>do', ':lua require"dap".step_out()<CR>', {})
     MAPKEY('n', '<leader>dr', ':lua require"dap".repl.toggle()<CR>', {})
     MAPKEY('n', '<leader>dx', ':lua require"dap".disconnect()<CR>', {})
+    MAPKEY('n', '<leader>dh', ':lua require"dap".run_to_cursor()<CR>', {})
   end,
 }
