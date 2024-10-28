@@ -6,11 +6,11 @@ return {
   },
   config = function()
     -- INFO: keymaps
-    MAPKEY('n', '<Leader>t', ':TimerStart 30m<CR>', { silent = true })
-    MAPKEY('n', '<Leader>tt', ':TimerStart 15m<CR>', { silent = true })
-    MAPKEY('n', '<Leader>tp', ':TimerPause<CR>', { silent = true })
-    MAPKEY('n', '<Leader>tr', ':TimerResume<CR>', { silent = true })
-    MAPKEY('n', '<Leader>ts', ':TimerStop<CR>', { silent = true })
+    MAPKEY('n', '<Leader>T', ':TimerStart 30m<CR>', { silent = true })
+    MAPKEY('n', '<Leader>Tt', ':TimerStart 15m<CR>', { silent = true })
+    MAPKEY('n', '<Leader>Tp', ':TimerPause<CR>', { silent = true })
+    MAPKEY('n', '<Leader>Tr', ':TimerResume<CR>', { silent = true })
+    MAPKEY('n', '<Leader>Ts', ':TimerStop<CR>', { silent = true })
 
     -- load highlights
     local baseHl = {
