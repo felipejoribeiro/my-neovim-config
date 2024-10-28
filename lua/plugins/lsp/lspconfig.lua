@@ -4,6 +4,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
+    'b0o/schemastore.nvim',
   },
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
@@ -18,6 +19,7 @@ return {
     end
 
     -- INFO: keymaps
+    MAPKEY('n', '<leader>b', ':Lspsaga term_toggle<CR>', { silent = true })
     local opts = { silent = true }
     local on_attach = function(_, bufnr)
       opts.desc = 'LSP references in telescope'
@@ -53,9 +55,6 @@ return {
 
       opts.desc = 'Restart LSP'
       MAPKEYBUF(bufnr, 'n', '<leader>rs', ':LspRestart<CR>', opts)
-
-      opts.desc = 'toggle LSP terminal'
-      MAPKEYBUF(bufnr, 'n', '<leader>b', ':Lspsaga term_toggle<CR>', opts)
     end
 
     local capabilities =
@@ -99,6 +98,12 @@ return {
     lspconfig['jsonls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
     })
 
     lspconfig['pyright'].setup({
