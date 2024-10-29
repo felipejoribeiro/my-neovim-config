@@ -6,3 +6,4 @@ spell
 local_dap/
 grammar/
 py_env/
+lazy-lock.json

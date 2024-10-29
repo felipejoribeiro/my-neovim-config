@@ -3,6 +3,4 @@ local dapy = require('dap-python')
 -- must work in the shell
 
 dapy.setup()
-
 dapy.test_runner = 'pytest'
-local test_runners = dapy.test_runners

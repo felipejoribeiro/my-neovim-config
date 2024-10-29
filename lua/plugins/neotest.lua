@@ -51,7 +51,6 @@ return {
           },
           args = { '--log-level', 'DEBUG', '--quiet' },
           runner = 'pytest',
-          django_find_project = true,
         }),
       },
     })
