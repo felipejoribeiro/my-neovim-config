@@ -72,6 +72,11 @@ return {
       on_attach = on_attach,
     })
 
+    lspconfig['dockerls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     lspconfig['ts_ls'].setup({
       init_options = {
         preferences = { includeCompletionsForModuleExports = false },
