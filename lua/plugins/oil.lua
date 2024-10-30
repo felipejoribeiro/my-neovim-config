@@ -5,7 +5,7 @@ return {
     MAPKEY('n', '-', '<CMD>Oil<CR>', { silent = true })
 
     require('oil').setup({
-      default_file_explorer = true,
+      default_file_explorer = false,
       columns = {
         'icon',
         'mtime',

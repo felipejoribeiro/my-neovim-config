@@ -23,7 +23,6 @@ return {
         'svelte',
         'graphql',
         'bash',
-        'dockerfile',
         'gitignore',
         'vim',
         'vimdoc',

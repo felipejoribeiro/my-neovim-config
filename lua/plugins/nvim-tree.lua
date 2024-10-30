@@ -3,8 +3,35 @@ return {
   'nvim-tree/nvim-tree.lua',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
+    'mikew/nvim-drawer',
   },
   config = function()
+    local drawer = require('nvim-drawer')
+    drawer.setup()
+
+    drawer.create_drawer({
+      nvim_tree_hack = true,
+      position = 'left',
+      size = 40,
+      on_did_create_buffer = function()
+        local nvim_tree_api = require('nvim-tree.api')
+        nvim_tree_api.tree.open({ current_window = true })
+      end,
+      on_did_open = function()
+        local nvim_tree_api = require('nvim-tree.api')
+        nvim_tree_api.tree.reload()
+
+        vim.opt_local.number = false
+        vim.opt_local.signcolumn = 'no'
+        vim.opt_local.statuscolumn = ''
+      end,
+
+      on_did_close = function()
+        local nvim_tree_api = require('nvim-tree.api')
+        nvim_tree_api.tree.close()
+      end,
+    })
+
     local glo = vim.g
     local nvimtree = require('nvim-tree')
 
@@ -14,8 +41,8 @@ return {
     glo.loaded_netrwPlugin = 1
 
     -- INFO: keymaps
-    MAPKEY('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
     MAPKEY('n', '<leader>E', '<cmd>NvimTreeCollapse<CR>', { desc = 'Collapse file explorer' }) -- collapse file explorer
+    MAPKEY('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
 
     -- customized colors
     local highlights = {
@@ -47,7 +74,7 @@ return {
     -- configure nvim-tree
     nvimtree.setup({
       view = {
-        relativenumber = true,
+        adaptive_size = true,
       },
       renderer = {
         indent_markers = {
@@ -74,7 +101,7 @@ return {
       },
       hijack_cursor = true,
       on_attach = on_attach,
-      diagnostics = { enable = false },
+      diagnostics = { enable = true },
       auto_reload_on_write = true,
       filters = {
         dotfiles = true,
