@@ -22,6 +22,7 @@ return {
         'lua_ls',
         'emmet_ls',
         'pyright',
+        'gopls',
       },
       automatic_installation = true,
     })
@@ -30,6 +31,9 @@ return {
         'prettier',
         'stylua',
         'dcm',
+        'gofumpt',
+        'goimports-reviser',
+        'golines',
         'isort',
         'black',
         'eslint',

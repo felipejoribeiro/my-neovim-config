@@ -29,6 +29,7 @@ return {
         lua = { 'stylua' },
         python = { 'black', 'isort' },
         go = { 'gofumpt', 'goimports-reviser', 'golines' },
+        sql = { 'sqlfmt' }, -- WARNING: install sqlfmt
       },
       format_after_save = {
         lsp_fallback = true,

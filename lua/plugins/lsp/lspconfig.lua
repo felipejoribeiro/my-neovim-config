@@ -4,6 +4,7 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
+    'nanotee/sqls.nvim',
     'b0o/schemastore.nvim',
   },
   event = { 'BufReadPre', 'BufNewFile' },
@@ -75,6 +76,29 @@ return {
     lspconfig['dockerls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+
+    -- WARNING: install sqls with go install github.com/lighttiger2505/sqls
+    lspconfig['sqls'].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
+        on_attach(client, bufnr)
+      end,
+      settings = {
+        sqls = {
+          connections = {
+            {
+              driver = 'postgresql',
+              dataSourceName = 'postgres://root:secret@localhost:5432/dd-db?sslmode=disable',
+            },
+            {
+              driver = 'postgresql',
+              dataSourceName = 'postgres://django:django@localhost:5432/server-db?sslmode=disable',
+            },
+          },
+        },
+      },
     })
 
     lspconfig['ts_ls'].setup({

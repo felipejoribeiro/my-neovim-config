@@ -77,6 +77,7 @@ vim.cmd([[
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab smartindent
     autocmd FileType make setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
     autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
+    autocmd FileType sql setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   augroup END
 ]])
 
@@ -84,9 +85,10 @@ vim.cmd([[
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
-  underline = true,
-  severity_sort = true,
+  underline = false,
+  severity_sort = false,
 })
+
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type

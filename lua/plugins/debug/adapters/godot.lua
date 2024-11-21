@@ -12,5 +12,6 @@ dap.configurations.gdscript = {
     name = 'Launch scene',
     project = '${workspaceFolder}',
     launch_scene = true,
+    repl_lang = 'gdscript',
   },
 }

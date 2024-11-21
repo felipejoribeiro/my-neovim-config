@@ -6,5 +6,6 @@ return {
     vim.g.claude_map_open_chat = '<leader>cv'
     vim.g.claude_map_implement = '<leader>cv'
     vim.g.claude_map_cancel_response = '<leader>cx'
+    vim.g.claude_map_send_chat_message = '<leader>cs'
   end,
 }

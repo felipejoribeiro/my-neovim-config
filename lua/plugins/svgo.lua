@@ -22,7 +22,7 @@ return {
     }
   end,
   opts = {
-    illustration_dir = '../assets/from_notes',
+    illustration_dir = './data',
     relative_path = true,
     template_files = {
       directory = {

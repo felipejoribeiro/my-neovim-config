@@ -1,11 +1,17 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
+    'microsoft/vscode-js-debug',
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
+    'mxsdev/nvim-dap-vscode-js',
+    {
+      'LiadOz/nvim-dap-repl-highlights',
+      config = true,
+    },
   },
   config = function()
     -- source all lua files in adapters folder
@@ -17,7 +23,11 @@ return {
     )
     for _, file in ipairs(files_in_adapters) do
       if file ~= nil then
-        require('plugins.debug.adapters.' .. vim.fn.fnamemodify(file, ':t:r'))
+        local ok, err =
+          pcall(require, 'plugins.debug.adapters.' .. vim.fn.fnamemodify(file, ':t:r'))
+        if not ok then
+          print('Error loading ' .. file .. ': ' .. err)
+        end
       end
     end
 

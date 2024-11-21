@@ -30,5 +30,6 @@ dap.configurations.dart = {
     flutterSdkPath = '/usr/lib/flutter/bin/flutter', -- ensure this is correct
     program = '${workspaceFolder}/lib/main.dart', -- ensure this is correct
     cwd = '${workspaceFolder}',
+    repl_lang = 'dart',
   },
 }

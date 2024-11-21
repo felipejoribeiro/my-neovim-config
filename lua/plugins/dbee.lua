@@ -7,7 +7,7 @@ return {
     -- Install tries to automatically detect the install method.
     -- if it fails, try calling it with one of these parameters:
     --    "curl", "wget", "bitsadmin", "go"
-    require('dbee').install()
+    require('dbee').install('go')
   end,
   config = function()
     vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -51,9 +51,14 @@ return {
       sources = {
         require('dbee.sources').MemorySource:new({
           {
-            name = 'server-db',
+            name = 'grande-mineiro-dev',
             type = 'postgres',
             url = 'postgres://django:django@localhost:5432/server-db?sslmode=disable',
+          },
+          {
+            name = 'dustdune-backoffice-dev',
+            type = 'postgres',
+            url = 'postgres://root:secret@localhost:5432/dd-db?sslmode=disable',
           },
         }),
       },
