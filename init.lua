@@ -77,7 +77,7 @@ vim.cmd([[
     autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab smartindent
     autocmd FileType make setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
     autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
-    autocmd FileType sql setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd FileType sql setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   augroup END
 ]])
 
