@@ -34,6 +34,7 @@ return {
 
     local glo = vim.g
     local nvimtree = require('nvim-tree')
+    local devicons = require('nvim-web-devicons')
 
     -- recommended global configs
     glo.loaded = 1
