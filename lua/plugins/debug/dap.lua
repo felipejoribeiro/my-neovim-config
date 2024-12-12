@@ -33,7 +33,7 @@ return {
 
     vim.fn.sign_define(
       'DapBreakpoint',
-      { text = '⬢', texthl = 'cyan', linehl = '', numhl = 'cyan' }
+      { text = '', texthl = 'cyan', linehl = '', numhl = 'cyan' }
     )
     vim.fn.sign_define(
       'DapStopped',

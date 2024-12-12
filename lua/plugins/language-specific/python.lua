@@ -1,1 +1,3 @@
-return { 'microsoft/python-type-stubs' }
+return {
+  'microsoft/python-type-stubs',
+}

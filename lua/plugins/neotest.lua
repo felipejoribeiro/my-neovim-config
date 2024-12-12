@@ -84,7 +84,7 @@ return {
             justMyCode = true,
             console = 'integratedTerminal',
           },
-          args = { '--log-level', 'DEBUG', '--quiet' },
+          args = { '--reuse-db', '--log-level', 'DEBUG', '--quiet' },
           runner = 'pytest',
         }),
         require('neotest-go')({

@@ -141,6 +141,7 @@ return {
       before_init = function(_, config)
         config.settings.python.analysis.stubPath =
           vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'python-type-stubs')
+        config.settings.python.analysis.typeCheckingMode = 'off'
       end,
     })
 

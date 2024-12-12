@@ -11,6 +11,15 @@ return {
     -- INFO: keymaps
     local opts = { silent = true }
     On_attach = function(_, bufnr)
+      opts.desc = 'Run Flutter project'
+      MAPKEY('n', '<leader>j', ':FlutterRun<CR>', opts)
+
+      opts.desc = 'Restart Flutter project'
+      MAPKEY('n', '<leader>jr', ':FlutterRestart<CR>', opts)
+
+      opts.desc = 'Toggle Flutter visual debug tool'
+      MAPKEY('n', '<leader>dv', ':FlutterVisualDebug<CR>', opts)
+
       opts.desc = 'LSP references in telescope'
       MAPKEYBUF(bufnr, 'n', 'gr', ':Telescope lsp_references<CR>', opts)
 

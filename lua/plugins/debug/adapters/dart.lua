@@ -12,11 +12,11 @@ dap.adapters.flutter = {
   args = { 'debug_adapter' },
 }
 
-isLinux = function()
+ISLINUX = function()
   return vim.loop.os_uname().sysname == 'Linux'
 end
 
-if isLinux() then
+if ISLINUX() then
   dap.configurations.dart = {
     {
       type = 'flutter',
