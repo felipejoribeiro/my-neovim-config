@@ -10,10 +10,6 @@ return {
 
     octo.setup({
       mappings_disable_default = false, -- submit review only works with this set as false
-      ui = {
-        use_signcolumn = true,
-        use_signstatus = true,
-      },
       mappings = {
         pull_request = {
           checkout_pr = { lhs = '<localleader>p', desc = 'checkout PR' },
