@@ -1,6 +1,7 @@
 return {
   'iamcco/markdown-preview.nvim',
-  ft = { 'markdown' },
+  ft = { 'markdown', 'markdown.pandoc' },
+  cmd = { 'MarkdownPreview', 'MarkdownPreviewToggle' },
   build = function()
     vim.fn['mkdp#util#install']()
   end,
@@ -18,6 +19,7 @@ return {
     vim.g.mkdp_browser_dark = 1
     vim.g.mkdp_theme = 'dark'
     vim.g.mkdp_auto_start = 1
+    vim.g.mkdp_refresh_slow = 0
     vim.g.mkdp_markdown_css = vim.fn.expand('~/.config/nvim/css/github_md_css.css')
     vim.g.mkdp_highlight_css = vim.fn.expand('~/.config/nvim/css/highlight.css')
     vim.g.mkdp_preview_options = {
@@ -25,5 +27,18 @@ return {
     }
 
     vim.g.mkdp_browser = 'qutebrowser'
+  end,
+  init = function()
+    vim.api.nvim_create_autocmd('BufEnter', {
+      pattern = 'copilot-chat',
+      callback = function()
+        vim.bo.filetype = 'markdown'
+        vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+        vim.g.mkdp_markdown_css = vim.fn.expand('~/.config/nvim/css/github_dark.css')
+        vim.g.mkdp_highlight_css = vim.fn.expand('~/.config/nvim/css/dracula_hl.css')
+        require('lazy').load({ plugins = { 'markdown-preview.nvim' } })
+      end,
+    })
   end,
 }

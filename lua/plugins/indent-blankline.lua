@@ -12,5 +12,8 @@ return {
       show_end = false,
       enabled = true,
     },
+    exclude = {
+      filetypes = { 'markdown' },
+    },
   },
 }

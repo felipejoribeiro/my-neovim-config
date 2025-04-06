@@ -7,6 +7,8 @@ return {
 
     -- INFO: Keybindings
     MAPKEY('n', '<leader>gs', '<cmd>G<CR>')
-    MAPKEY('n', '<leader>gb', '<cmd>Git blame<CR>')
+    MAPKEY('n', '<leader>gb', '<cmd>Gitsigns blame<CR>')
+    MAPKEY('n', '<leader>gp', '<cmd>Gitsigns preview_hunk<CR>')
+    MAPKEY('n', '<leader>gl', '<cmd>Gitsigns toggle_current_line_blame<CR>')
   end,
 }

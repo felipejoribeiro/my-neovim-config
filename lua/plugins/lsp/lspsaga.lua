@@ -8,7 +8,7 @@ return {
       definition = {
         keys = {
           edit = '<c-o>',
-          split = '<c-s>',
+          split = '<c-b>',
           vsplit = '<c-v>',
           tabe = '<c-t>',
         },

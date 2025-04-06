@@ -42,7 +42,7 @@ return {
       MAPKEYBUF(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
       opts.desc = 'Show buffer diagnostics'
-      MAPKEYBUF(bufnr, 'n', 'gb', ':Telescope diagnostics bufnr=' .. bufnr .. '<CR>', opts)
+      MAPKEYBUF(bufnr, 'n', '[]', ':Telescope diagnostics bufnr=' .. bufnr .. '<CR>', opts)
 
       opts.desc = 'Go to previous diagnostic'
       MAPKEYBUF(bufnr, 'n', '[g', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
@@ -99,5 +99,10 @@ return {
         capabilities = Capabilities,
       },
     })
+  end,
+  on_attach = function(_, bufnr)
+    if bufnr and vim.g.nvim_buf_get_option(bufnr, 'filetype') == 'dart' then
+      MAPKEYBUF(bufnr, 'n', '<leader>j', ':FlutterRun<CR>', { silent = true })
+    end
   end,
 }

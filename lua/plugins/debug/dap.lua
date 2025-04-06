@@ -44,10 +44,10 @@ return {
     MAPKEY('n', '<leader>db', ':lua require"dap".toggle_breakpoint()<CR>', {})
     MAPKEY('n', '<leader>dc', ':lua require"dap".continue()<CR>', {})
     MAPKEY('n', '<leader>dj', ':lua require"dap".step_over()<CR>', {})
-    MAPKEY('n', '<leader>di', ':lua require"dap".step_into()<CR>', {})
-    MAPKEY('n', '<leader>do', ':lua require"dap".step_out()<CR>', {})
+    MAPKEY('n', '<leader>dl', ':lua require"dap".step_into()<CR>', {})
+    MAPKEY('n', '<leader>dh', ':lua require"dap".step_out()<CR>', {})
     MAPKEY('n', '<leader>dr', ':lua require"dap".repl.toggle()<CR>', {})
     MAPKEY('n', '<leader>dx', ':lua require"dap".disconnect()<CR>', {})
-    MAPKEY('n', '<leader>dh', ':lua require"dap".run_to_cursor()<CR>', {})
+    MAPKEY('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>', {})
   end,
 }
