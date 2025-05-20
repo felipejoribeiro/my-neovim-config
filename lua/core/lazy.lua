@@ -23,6 +23,7 @@ if ok then
     { import = 'plugins.lsp' },
     { import = 'plugins.debug' },
     { import = 'plugins.language-specific' },
+    { import = 'plugins.ai' },
   }, {
     checker = {
       enabled = true,
