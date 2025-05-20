@@ -7,7 +7,6 @@ return {
     'nanotee/sqls.nvim',
     'b0o/schemastore.nvim',
   },
-  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
@@ -62,24 +61,14 @@ return {
       cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     -- WARNING: install bash-language-server
-    lspconfig['bashls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- WARNING: install the godot editor https://github.com/habamax/vim-godot
-    lspconfig['gdscript'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['dockerls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- WARNING: install sqls with go install github.com/lighttiger2505/sqls
-    lspconfig['sqls'].setup({
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    vim.lsp.config('sqls', {
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         require('sqls').on_attach(client, bufnr)
@@ -101,32 +90,13 @@ return {
       },
     })
 
-    lspconfig['ts_ls'].setup({
+    vim.lsp.config('ts_ls', {
       init_options = {
         preferences = { includeCompletionsForModuleExports = false },
       },
-      capabilities = capabilities,
-      on_attach = on_attach,
     })
 
-    lspconfig['gradle_ls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['html'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['cssls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['jsonls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.lsp.config('jsonls', {
       settings = {
         json = {
           schemas = require('schemastore').json.schemas(),
@@ -135,24 +105,26 @@ return {
       },
     })
 
-    lspconfig['pyright'].setup({
-      capabilities = capabilities,
+    vim.lsp.config('pyright', {
       on_attach = on_attach,
-      before_init = function(_, config)
-        config.settings.python.analysis.stubPath =
-          vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'python-type-stubs')
-        config.settings.python.analysis.typeCheckingMode = 'off'
-      end,
+      settings = {
+        python = {
+          analysis = {
+            autoImportCompletions = true,
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            stubPath = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'python-type-stubs'),
+            typeCheckingMode = 'off',
+          },
+        },
+      },
     })
 
-    lspconfig['csharp_ls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['svelte'].setup({
+    vim.lsp.config('svelte', {
       filetypes = { 'svelte' },
-      capabilities = capabilities,
+      init_options = {
+        provideFormatter = false,
+      },
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
 
@@ -167,30 +139,7 @@ return {
       end,
     })
 
-    lspconfig['gopls'].setup({
-      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-      root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
-      settings = {
-        gopls = {
-          completeUnimported = true,
-          usePlaceholders = true,
-          analyses = {
-            unusedparams = true,
-          },
-        },
-      },
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['rust_analyzer'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig['lua_ls'].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.lsp.config('lua_ls', {
       settings = {
         Lua = {
           diagnostics = {
@@ -201,6 +150,20 @@ return {
               [vim.fn.expand('$VIMRUNTIME/lua')] = true,
               [vim.fn.stdpath('config') .. '/lua'] = true,
             },
+          },
+        },
+      },
+    })
+
+    vim.lsp.config('gopls', {
+      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
           },
         },
       },

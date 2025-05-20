@@ -10,7 +10,6 @@ return {
       typescriptreact = { 'eslint' },
       javascriptreact = { 'eslint' },
       svelte = { 'eslint' },
-      python = { 'flake8' }, -- WARNING: Install the tool with pip! (flake8 package)
       csharp = { 'sonarlint-language-server' },
       go = { 'golangci-lint' },
       sql = { 'sqlfluff' }, -- WARNING: Install the tool globally
@@ -38,6 +37,16 @@ return {
       },
       group = lint_augroup,
       callback = function()
+        require('core.lsp_identifiers')
+
+        if CHECK_RUFF() == true then
+          lint.try_lint('ruff')
+        elseif CHECK_FLAKE8() == true then
+          lint.try_lint('flake8')
+        else
+          lint.try_lint('flake8')
+        end
+
         lint.try_lint()
       end,
     })

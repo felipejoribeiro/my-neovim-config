@@ -21,7 +21,6 @@ return {
         'svelte',
         'lua_ls',
         'emmet_ls',
-        'pyright',
         'gopls',
       },
       automatic_installation = true,
