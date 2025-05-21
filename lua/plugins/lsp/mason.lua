@@ -16,7 +16,6 @@ return {
         'ts_ls',
         'html',
         'cssls',
-        'zk',
         'jsonls',
         'svelte',
         'lua_ls',

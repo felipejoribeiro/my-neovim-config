@@ -16,6 +16,7 @@ opt.completeopt = 'menuone,noselect' -- complete options
 opt.backspace = 'indent,eol,start' -- backspace options
 opt.mouse = 'a' -- enable mouse support
 opt.wrap = false -- disable line wrap by default
+opt.laststatus = 3 -- views can only be fully collapsed with the global statusline
 
 -- backup configuration
 opt.undofile = true -- persistent undo
