@@ -14,7 +14,7 @@ return {
       '<cmd>lua conform.format({lsp_fallback = true, async = false, timeout_ms = 500})<CR>'
     )
 
-    local python_formatter = CHECK_RUFF() and { 'ruff' } or { 'black', 'isort' }
+    local python_formatter = CHECK_RUFF() and { 'ruff_format' } or { 'black', 'isort' }
 
     conform.setup({
       formatters_by_ft = {
