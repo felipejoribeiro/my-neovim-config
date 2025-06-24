@@ -1,3 +1,5 @@
+require('core.lsp_identifiers')
+
 return {
   'nvim-neotest/neotest',
   dependencies = {
@@ -77,6 +79,12 @@ return {
       },
     }, neotest_ns)
 
+    -- python arguments
+    local py_args = { '--log-level', 'DEBUG', '--quiet' }
+    if CHECK_DJANGO() then
+      py_args = vim.list_extend(py_args, { '--reuse-db' })
+    end
+
     require('neotest').setup({
       adapters = {
         require('neotest-python')({
@@ -84,7 +92,7 @@ return {
             justMyCode = true,
             console = 'integratedTerminal',
           },
-          args = { '--reuse-db', '--log-level', 'DEBUG', '--quiet' },
+          args = py_args,
           runner = 'pytest',
         }),
         require('neotest-go')({

@@ -1,4 +1,6 @@
 require('core.utils')
+require('core.lsp_identifiers')
+
 return {
   'stevearc/conform.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -11,6 +13,8 @@ return {
       'gf',
       '<cmd>lua conform.format({lsp_fallback = true, async = false, timeout_ms = 500})<CR>'
     )
+
+    local python_formatter = CHECK_RUFF() and { 'ruff_format' } or { 'black', 'isort' }
 
     conform.setup({
       formatters_by_ft = {
@@ -27,7 +31,7 @@ return {
         markdown = { 'prettier' },
         graphql = { 'prettier' },
         lua = { 'stylua' },
-        python = { 'black', 'isort' },
+        python = python_formatter,
         go = { 'gofumpt', 'goimports-reviser', 'golines' },
         sql = { 'sqlfmt' }, -- WARNING: install sqlfmt
       },
