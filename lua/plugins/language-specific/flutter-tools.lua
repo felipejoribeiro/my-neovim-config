@@ -14,6 +14,14 @@ return {
       opts.desc = 'Run Flutter project'
       MAPKEY('n', '<leader>j', ':FlutterRun<CR>', opts)
 
+      opts.desc = 'Toggle inlay hints'
+      MAPKEY(
+        'n',
+        '<leader>hd',
+        ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
+        opts
+      )
+
       opts.desc = 'Restart Flutter project'
       MAPKEY('n', '<leader>jr', ':FlutterRestart<CR>', opts)
 
@@ -104,5 +112,6 @@ return {
     if bufnr and vim.g.nvim_buf_get_option(bufnr, 'filetype') == 'dart' then
       MAPKEYBUF(bufnr, 'n', '<leader>j', ':FlutterRun<CR>', { silent = true })
     end
+    vim.lsp.inlay_hint.enable(false)
   end,
 }

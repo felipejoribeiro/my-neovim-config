@@ -20,7 +20,6 @@ return {
         'svelte',
         'lua_ls',
         'emmet_ls',
-        'gopls',
       },
       automatic_installation = true,
     })

@@ -22,6 +22,14 @@ return {
     MAPKEY('n', '<leader>b', ':Lspsaga term_toggle<CR>', { silent = true })
     local opts = { silent = true }
     local on_attach = function(_, bufnr)
+      opts.desc = 'Toggle inlay hints'
+      MAPKEY(
+        'n',
+        '<leader>hd',
+        ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
+        opts
+      )
+
       opts.desc = 'LSP references in telescope'
       MAPKEYBUF(bufnr, 'n', 'gr', ':Telescope lsp_references<CR>', opts)
 
@@ -156,8 +164,7 @@ return {
     })
 
     vim.lsp.config('gopls', {
-      filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-      root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
+      on_attach = on_attach,
       settings = {
         gopls = {
           completeUnimported = true,
