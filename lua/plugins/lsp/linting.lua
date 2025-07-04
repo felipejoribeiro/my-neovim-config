@@ -14,6 +14,7 @@ return {
       go = { 'golangci-lint' },
       sql = { 'sqlfluff' }, -- WARNING: Install the tool globally
       make = { 'checkmake' },
+      gdscript = { 'gdlint' },
     }
 
     local sqlfluff = require('lint').linters.sqlfluff

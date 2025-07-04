@@ -76,6 +76,19 @@ return {
       on_attach = on_attach,
     })
 
+    vim.lsp.config('gdscript', {
+      name = 'godot',
+      cmd = vim.lsp.rpc.connect('127.0.0.1', 6005),
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    -- Only works in legacy config
+    lspconfig.gdscript.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     vim.lsp.config('sqls', {
       capabilities = capabilities,
       on_attach = function(client, bufnr)

@@ -31,6 +31,7 @@ return {
         markdown = { 'prettier' },
         graphql = { 'prettier' },
         lua = { 'stylua' },
+        gdscript = { 'gdformat' },
         python = python_formatter,
         go = { 'gofumpt', 'goimports-reviser', 'golines' },
         sql = { 'sqlfmt' }, -- WARNING: install sqlfmt
