@@ -51,3 +51,24 @@ MAPKEY('n', '<leader>sn', '<cmd>set relativenumber!<CR>')
 
 -- repeate last macro
 MAPKEY('n', ',', '@@')
+
+-- cursor
+vim.keymap.set('n', '<leader>cm', function()
+  vim.fn.jobstart({
+    '/usr/share/cursor/cursor',
+    '--new-window',
+    '%F',
+    '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_miio',
+    '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_miio/extensions',
+  }, { detach = true })
+end)
+
+vim.keymap.set('n', '<leader>cp', function()
+  vim.fn.jobstart({
+    '/usr/share/cursor/cursor',
+    '--new-window',
+    '%F',
+    '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_personal',
+    '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_personal/extensions',
+  }, { detach = true })
+end)

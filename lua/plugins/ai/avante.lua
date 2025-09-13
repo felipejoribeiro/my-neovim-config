@@ -5,6 +5,15 @@ return {
   opts = {
     provider = 'copilot',
     auto_suggestions_provider = 'copilot',
+    system_prompt = function()
+      local hub = require('mcphub').get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ''
+    end,
+    custom_tools = function()
+      return {
+        require('mcphub.extensions.avante').mcp_tool(),
+      }
+    end,
   },
   build = 'make',
   dependencies = {
@@ -18,20 +27,6 @@ return {
     'ibhagwan/fzf-lua', -- for file_selector provider fzf
     'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
     'zbirenbaum/copilot.lua', -- for providers='copilot'
-    {
-      'HakonHarnes/img-clip.nvim',
-      event = 'VeryLazy',
-      opts = {
-        default = {
-          embed_image_as_base64 = false,
-          prompt_for_file_name = false,
-          drag_and_drop = {
-            insert_mode = true,
-          },
-          use_absolute_path = false, -- different from default
-        },
-      },
-    },
     {
       'MeanderingProgrammer/render-markdown.nvim',
       opts = {

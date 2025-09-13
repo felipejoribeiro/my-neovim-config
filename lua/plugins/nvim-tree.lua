@@ -108,6 +108,7 @@ return {
         dotfiles = true,
         custom = {
           '.DS_Store',
+          '.import',
         },
         exclude = {},
       },
