@@ -52,23 +52,25 @@ MAPKEY('n', '<leader>sn', '<cmd>set relativenumber!<CR>')
 -- repeate last macro
 MAPKEY('n', ',', '@@')
 
--- cursor
+-- cursor integration
 vim.keymap.set('n', '<leader>cm', function()
+  local root_dir = vim.fn.getcwd()
   vim.fn.jobstart({
-    '/usr/share/cursor/cursor',
+    'cursor',
     '--new-window',
-    '%F',
     '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_miio',
     '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_miio/extensions',
+    root_dir,
   }, { detach = true })
 end)
 
 vim.keymap.set('n', '<leader>cp', function()
+  local root_dir = vim.fn.getcwd()
   vim.fn.jobstart({
-    '/usr/share/cursor/cursor',
+    'cursor',
     '--new-window',
-    '%F',
     '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_personal',
     '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_personal/extensions',
+    root_dir,
   }, { detach = true })
 end)
