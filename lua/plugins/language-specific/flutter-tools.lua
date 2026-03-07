@@ -12,7 +12,13 @@ return {
     local opts = { silent = true }
     On_attach = function(_, bufnr)
       opts.desc = 'Run Flutter project'
-      MAPKEY('n', '<leader>j', ':FlutterRun<CR>', opts)
+      vim.keymap.set('n', '<leader>j', function()
+        if string.match(vim.fn.getcwd(), 'miio') then
+          vim.cmd('FlutterRun --flavor dev')
+        else
+          vim.cmd('FlutterRun')
+        end
+      end, opts)
 
       opts.desc = 'Toggle inlay hints'
       MAPKEY(
@@ -74,10 +80,20 @@ return {
         enabled = true,
         run_via_dap = true,
         register_configurations = function(_)
+          -- NOTE:
+          -- Mason's `dart-debug-adapter` can be web-only (it currently is in your install),
+          -- which crashes when passed `flutter`. Prefer the Flutter SDK's built-in DAP:
+          --   flutter debug_adapter
+          local flutter = vim.fn.exepath('flutter')
+          if flutter == '' then
+            flutter = 'flutter' -- fall back to PATH lookup at spawn time
+          end
+
           require('dap').adapters.dart = {
             type = 'executable',
-            command = vim.fn.stdpath('data') .. '/mason/bin/dart-debug-adapter',
-            args = { 'flutter' },
+            command = flutter,
+            args = { 'debug_adapter' },
+            options = { detached = false },
           }
         end,
       },

@@ -5,11 +5,13 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
+    'dharmx/telescope-media.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
+    local canned = require('telescope._extensions.media.lib.canned')
 
     telescope.setup({
       defaults = {
@@ -32,6 +34,17 @@ return {
           },
         },
         extensions = {
+          media = {
+            backend = 'viu',
+            flags = {
+              viu = {
+                move = true, -- GIF preview
+              },
+            },
+            on_confirm_single = canned.single.copy_path,
+            on_confirm_muliple = canned.multiple.bulk_copy,
+            cache_path = vim.fn.stdpath('cache') .. '/media',
+          },
           fzf = {
             fuzzy = true,
             override_generic_sorter = true,
@@ -42,6 +55,7 @@ return {
       },
     })
 
+    telescope.load_extension('media')
     telescope.load_extension('fzf')
 
     -- Some color sdjustments

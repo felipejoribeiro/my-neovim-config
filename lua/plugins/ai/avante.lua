@@ -3,6 +3,7 @@ return {
   event = 'VeryLazy',
   version = false, -- Never set this value to "*"! Never!
   opts = {
+    latex = { enabled = false },
     provider = 'copilot',
     auto_suggestions_provider = 'copilot',
     system_prompt = function()

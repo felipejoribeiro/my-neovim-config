@@ -9,6 +9,7 @@ return {
     'hrsh7th/cmp-buffer', -- buffer source for nvim-cmp
     'hrsh7th/cmp-path', -- path source for nvim-cmp
     'hrsh7th/cmp-cmdline', -- cmdline source for nvim-cmp
+    'hrsh7th/cmp-emoji', -- emoji source for nvim-cmp
     'f3fora/cmp-spell', -- spell source for nvim-cmp
     'rafamadriz/friendly-snippets', -- good snippets
     'saadparwaiz1/cmp_luasnip', -- snippets source for nvim-cmp
@@ -78,6 +79,7 @@ return {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
+        { name = 'emoji' },
         -- { name = 'buffer' },
         -- { name = 'cmp_git' },
         -- { name = 'spell' },

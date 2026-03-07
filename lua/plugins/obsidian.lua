@@ -22,6 +22,7 @@ return {
     MAPKEY('n', '<leader>os', ':ObsidianSearch<CR>', { silent = true })
 
     require('obsidian').setup({
+      ui = { enable = false },
       notes_subdir = 'fleeting',
       new_notes_location = 'notes_subdir',
       preferred_link_style = 'markdown',

@@ -76,53 +76,21 @@ return {
       on_attach = on_attach,
     })
 
-    vim.lsp.config('gdscript', {
-      name = 'godot',
-      cmd = vim.lsp.rpc.connect('127.0.0.1', 6005),
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     -- Only works in legacy config
-    lspconfig.gdscript.setup({
+    -- lspconfig.gdscript.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
+
+    vim.lsp.config('gdscript', {
       capabilities = capabilities,
       on_attach = on_attach,
-    })
-
-    vim.lsp.config('sqls', {
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        require('sqls').on_attach(client, bufnr)
-        on_attach(client, bufnr)
-      end,
-      settings = {
-        sqls = {
-          connections = {
-            {
-              driver = 'postgresql',
-              dataSourceName = 'postgres://root:secret@localhost:5432/dd-db?sslmode=disable',
-            },
-            {
-              driver = 'postgresql',
-              dataSourceName = 'postgres://django:django@localhost:5432/server-db?sslmode=disable',
-            },
-          },
-        },
-      },
     })
 
     vim.lsp.config('ts_ls', {
+      on_attach = on_attach,
       init_options = {
         preferences = { includeCompletionsForModuleExports = false },
-      },
-    })
-
-    vim.lsp.config('jsonls', {
-      settings = {
-        json = {
-          schemas = require('schemastore').json.schemas(),
-          validate = { enable = true },
-        },
       },
     })
 
@@ -146,11 +114,12 @@ return {
       init_options = {
         provideFormatter = false,
       },
+      capabilities = capabilities,
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
 
         vim.api.nvim_create_autocmd('BufWritePost', {
-          pattern = { '*.js', '*.ts', '*.svelte' },
+          pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.svelte' },
           callback = function(ctx)
             if client.name == 'svelte' or vim.bo[bufnr].filetype == 'svelte' then
               client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.file })
@@ -158,35 +127,6 @@ return {
           end,
         })
       end,
-    })
-
-    vim.lsp.config('lua_ls', {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            library = {
-              [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-              [vim.fn.stdpath('config') .. '/lua'] = true,
-            },
-          },
-        },
-      },
-    })
-
-    vim.lsp.config('gopls', {
-      on_attach = on_attach,
-      settings = {
-        gopls = {
-          completeUnimported = true,
-          usePlaceholders = true,
-          analyses = {
-            unusedparams = true,
-          },
-        },
-      },
     })
   end,
 }

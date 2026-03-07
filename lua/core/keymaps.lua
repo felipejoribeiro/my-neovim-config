@@ -52,25 +52,44 @@ MAPKEY('n', '<leader>sn', '<cmd>set relativenumber!<CR>')
 -- repeate last macro
 MAPKEY('n', ',', '@@')
 
--- cursor integration
-vim.keymap.set('n', '<leader>cm', function()
-  local root_dir = vim.fn.getcwd()
-  vim.fn.jobstart({
-    'cursor',
-    '--new-window',
-    '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_miio',
-    '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_miio/extensions',
-    root_dir,
-  }, { detach = true })
-end)
+-- terminal navigation (escape terminal mode with tmux-navigator keys)
+MAPKEY('t', '<C-h>', '<C-\\><C-n><cmd>TmuxNavigateLeft<CR>')
+MAPKEY('t', '<C-j>', '<C-\\><C-n><cmd>TmuxNavigateDown<CR>')
+MAPKEY('t', '<C-k>', '<C-\\><C-n><cmd>TmuxNavigateUp<CR>')
+MAPKEY('t', '<C-l>', '<C-\\><C-n><cmd>TmuxNavigateRight<CR>')
+MAPKEY('t', '<Esc><Esc>', '<C-\\><C-n>')
 
-vim.keymap.set('n', '<leader>cp', function()
+-- claude usage (chortcut to :CCUsage)
+MAPKEY('n', '<leader>au', '<cmd>CCUsage<CR>')
+
+-- open .excalidraw files in the excalidraw app
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.excalidraw',
+  callback = function()
+    vim.keymap.set('n', '<leader>j', function()
+      vim.fn.jobstart({ 'open', vim.fn.expand('%:p') }, { detach = true })
+    end, { buffer = true, desc = 'Open in Excalidraw' })
+  end,
+})
+
+-- cursor integration
+vim.keymap.set('n', '<leader>oc', function()
   local root_dir = vim.fn.getcwd()
-  vim.fn.jobstart({
-    'cursor',
-    '--new-window',
-    '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_personal',
-    '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_personal/extensions',
-    root_dir,
-  }, { detach = true })
+  if not string.match(root_dir, 'miio') then
+    vim.fn.jobstart({
+      'cursor',
+      '--new-window',
+      '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_personal',
+      '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_personal/extensions',
+      root_dir,
+    }, { detach = true })
+  else
+    vim.fn.jobstart({
+      'cursor',
+      '--new-window',
+      '--user-data-dir=' .. os.getenv('HOME') .. '/.cursor_miio',
+      '--extensions-dir=' .. os.getenv('HOME') .. '/.cursor_miio/extensions',
+      root_dir,
+    }, { detach = true })
+  end
 end)

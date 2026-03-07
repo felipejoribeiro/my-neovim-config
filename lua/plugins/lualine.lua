@@ -42,7 +42,25 @@ return {
           },
         },
         lualine_x = {
-          { 'encoding' },
+          {
+            function()
+              local config_dir = vim.env.CLAUDE_CONFIG_DIR or ''
+              if string.match(config_dir, 'miio') then
+                return ' miio'
+              else
+                return ' personal'
+              end
+            end,
+            color = function()
+              local config_dir = vim.env.CLAUDE_CONFIG_DIR or ''
+              if string.match(config_dir, 'miio') then
+                return { fg = '#f0a500' }
+              else
+                return { fg = '#89b4fa' }
+              end
+            end,
+          },
+          'ccusage',
         },
       },
     })

@@ -18,11 +18,6 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { 'prettier' },
-        typescript = { 'prettier' },
-        typescriptreact = { 'prettier' },
-        javascriptreact = { 'prettier' },
-        svelte = { 'prettier' },
         css = { 'prettier' },
         scss = { 'prettier' },
         html = { 'prettier' },

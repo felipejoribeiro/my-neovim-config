@@ -1,6 +1,7 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
+    'theHamsta/nvim-dap-virtual-text',
     'microsoft/vscode-js-debug',
     'leoluz/nvim-dap-go',
     'mfussenegger/nvim-dap-python',
@@ -30,6 +31,14 @@ return {
         end
       end
     end
+
+    local ok, virtual_text = pcall(require, 'nvim-dap-virtual-text')
+    if ok then
+      virtual_text.setup({ clear_on_continue = true })
+    end
+
+    vim.api.nvim_set_hl(0, 'NvimDapVirtualText', { fg = 'cyan' })
+    vim.api.nvim_set_hl(0, 'NvimDapVirtualTextChanged', { fg = 'cyan' })
 
     vim.fn.sign_define(
       'DapBreakpoint',
