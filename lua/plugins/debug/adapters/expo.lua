@@ -168,7 +168,7 @@ local function ensure_expo_config()
     name = 'Debug Expo (Hermes)',
     metroPort = 8081,
     projectRoot = vim.fn.getcwd(),
-    --verbose = true, -- uncomment to show [expo-dap] logs in REPL
+    -- verbose = true, -- uncomment to show [expo-dap] logs in REPL
   }
 
   local expo_reload = {
@@ -178,7 +178,7 @@ local function ensure_expo_config()
     metroPort = 8081,
     projectRoot = vim.fn.getcwd(),
     reloadOnAttach = true,
-    verbose = true,
+    -- verbose = true, -- uncomment to show [expo-dap] logs in REPL
   }
 
   local js_langs = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }

@@ -34,7 +34,10 @@ return {
 
     local ok, virtual_text = pcall(require, 'nvim-dap-virtual-text')
     if ok then
-      virtual_text.setup({ clear_on_continue = true })
+      virtual_text.setup({
+        clear_on_continue = true,
+        virt_text_pos = 'eol',
+      })
     end
 
     vim.api.nvim_set_hl(0, 'NvimDapVirtualText', { fg = 'cyan' })
