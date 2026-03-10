@@ -17,8 +17,29 @@ _G._expo_term = _G._expo_term or {
 }
 local expo_term = _G._expo_term
 
+local function recover_expo_term()
+  if expo_term.buf and vim.api.nvim_buf_is_valid(expo_term.buf) and expo_term.chan then
+    return true
+  end
+  -- Try to find an existing expo terminal buffer
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_valid(buf) then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name:find('npx expo start') then
+        local chan = vim.b[buf].terminal_job_id
+        if chan then
+          expo_term.buf = buf
+          expo_term.chan = chan
+          return true
+        end
+      end
+    end
+  end
+  return false
+end
+
 local function is_expo_running()
-  return expo_term.buf and vim.api.nvim_buf_is_valid(expo_term.buf) and expo_term.chan
+  return recover_expo_term()
 end
 
 local function start_expo(args)
@@ -27,8 +48,8 @@ local function start_expo(args)
     return
   end
 
-  -- Create a split at the bottom for the terminal
-  vim.cmd('botright 15split')
+  -- Create a split at the bottom with a new buffer for the terminal
+  vim.cmd('botright 15new')
   expo_term.win = vim.api.nvim_get_current_win()
 
   local cmd = 'npx expo start -c ' .. (args or '--android')
@@ -147,7 +168,7 @@ local function ensure_expo_config()
     name = 'Debug Expo (Hermes)',
     metroPort = 8081,
     projectRoot = vim.fn.getcwd(),
-    verbose = true, -- uncomment to show [expo-dap] logs in REPL
+    --verbose = true, -- uncomment to show [expo-dap] logs in REPL
   }
 
   local expo_reload = {
@@ -168,13 +189,35 @@ local function ensure_expo_config()
   end
 end
 
+local expo_reload_config = {
+  type = 'expo',
+  request = 'launch',
+  name = 'Debug Expo (Reload)',
+  metroPort = 8081,
+  projectRoot = vim.fn.getcwd(),
+  reloadOnAttach = true,
+  verbose = true,
+}
+
 MAPKEY('n', '<leader>ja', '<cmd>ExpoGoAndroid<CR>', { desc = 'Expo: Start Android' })
+MAPKEY('n', '<leader>jt', '<cmd>ExpoTermToggle<CR>', { desc = 'Expo: Toggle terminal' })
 vim.keymap.set('n', '<leader>jr', function()
-  require('dap').terminate(nil, nil, function()
+  local d = require('dap')
+  local session = d.session()
+
+  local function reconnect()
     vim.defer_fn(function()
-      require('dap').run_last()
-    end, 500)
-  end)
+      d.run(expo_reload_config)
+    end, 2000)
+  end
+
+  if session then
+    d.terminate(nil, nil, function()
+      vim.schedule(reconnect)
+    end)
+  else
+    reconnect()
+  end
 end, { noremap = true, desc = 'Expo: Restart DAP session' })
 
 -- Register configs eagerly and also on BufRead for late-loaded projects
