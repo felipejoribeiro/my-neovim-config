@@ -117,6 +117,14 @@ vim.api.nvim_create_user_command('ExpoGoIos', function()
   start_expo('--ios')
 end, {})
 
+vim.api.nvim_create_user_command('ExpoGoWeb', function()
+  start_expo('--web')
+end, {})
+
+vim.api.nvim_create_user_command('ExpoGoIosDevice', function()
+  start_expo('--localhost')
+end, {})
+
 vim.api.nvim_create_user_command('ExpoStop', function()
   stop_expo()
 end, {})
@@ -200,6 +208,7 @@ local expo_reload_config = {
 }
 
 MAPKEY('n', '<leader>ja', '<cmd>ExpoGoAndroid<CR>', { desc = 'Expo: Start Android' })
+MAPKEY('n', '<leader>jw', '<cmd>ExpoGoWeb<CR>', { desc = 'Expo: Start Web' })
 MAPKEY('n', '<leader>jt', '<cmd>ExpoTermToggle<CR>', { desc = 'Expo: Toggle terminal' })
 vim.keymap.set('n', '<leader>jr', function()
   local d = require('dap')

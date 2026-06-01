@@ -8,7 +8,6 @@ return {
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
-    'mxsdev/nvim-dap-vscode-js',
     {
       'LiadOz/nvim-dap-repl-highlights',
       config = true,
@@ -50,6 +49,18 @@ return {
     vim.fn.sign_define(
       'DapStopped',
       { text = '▶', texthl = 'Green', linehl = 'ColorColumn', numhl = 'Green' }
+    )
+    vim.fn.sign_define(
+      'DapBreakpointRejected',
+      { text = '○', texthl = 'Comment', linehl = '', numhl = 'Comment' }
+    )
+    vim.fn.sign_define(
+      'DapBreakpointCondition',
+      { text = '◆', texthl = 'DiagnosticWarn', linehl = '', numhl = 'DiagnosticWarn' }
+    )
+    vim.fn.sign_define(
+      'DapLogPoint',
+      { text = '◆', texthl = 'DiagnosticInfo', linehl = '', numhl = 'DiagnosticInfo' }
     )
 
     -- INFO: Keymaps

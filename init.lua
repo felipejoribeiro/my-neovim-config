@@ -11,6 +11,23 @@ opt.background = 'dark' -- set background to dark
 opt.signcolumn = 'yes' -- always show signcolumn
 opt.fileformat = 'unix' -- set file format
 opt.clipboard:append('unnamedplus') -- use system clipboard as default register
+
+-- On Linux, force xclip; default xsel --nodetach freezes Brave 1.90 (see brave/brave-browser#55829).
+-- On macOS, leave vim.g.clipboard unset so Neovim picks pbcopy/pbpaste.
+if vim.fn.has('mac') == 0 and vim.fn.has('unix') == 1 and vim.fn.executable('xclip') == 1 then
+  vim.g.clipboard = {
+    name = 'xclip',
+    copy = {
+      ['+'] = 'xclip -selection clipboard',
+      ['*'] = 'xclip -selection primary',
+    },
+    paste = {
+      ['+'] = 'xclip -selection clipboard -o',
+      ['*'] = 'xclip -selection primary -o',
+    },
+    cache_enabled = 0,
+  }
+end
 opt.shortmess = vim.o.shortmess .. 'c' -- don't print short messages
 opt.completeopt = 'menuone,noselect' -- complete options
 opt.backspace = 'indent,eol,start' -- backspace options

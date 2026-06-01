@@ -5,6 +5,7 @@ return {
   dependencies = {
     'nvim-neotest/neotest-go',
     'nvim-neotest/neotest-python',
+    'nvim-neotest/neotest-jest',
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
@@ -94,6 +95,21 @@ return {
           },
           args = py_args,
           runner = 'pytest',
+        }),
+        require('neotest-jest')({
+          jestCommand = 'npx jest',
+          cwd = function(path)
+            -- Walk up from the test file to find the nearest jest.config
+            local root = path
+            while root ~= '/' do
+              root = vim.fn.fnamemodify(root, ':h')
+              if vim.fn.filereadable(root .. '/jest.config.ts') == 1
+                or vim.fn.filereadable(root .. '/jest.config.js') == 1 then
+                return root
+              end
+            end
+            return vim.fn.getcwd()
+          end,
         }),
         require('neotest-go')({
           dap = {

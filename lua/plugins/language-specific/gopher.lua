@@ -6,9 +6,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'mfussenegger/nvim-dap',
   },
-  build = function()
-    vim.cmd.GoInstallDeps()
-  end,
   config = function(_, opts)
     require('gopher').setup(opts)
   end,
