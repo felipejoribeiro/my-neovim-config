@@ -11,6 +11,13 @@ return {
     -- INFO: keymaps
     local opts = { silent = true }
     On_attach = function(_, bufnr)
+      -- Document colors: managed natively by Neovim 0.12+ instead of
+      -- flutter-tools (its `lsp.color` option is deprecated). Background style,
+      -- no virtual text, mirroring the previous flutter-tools config.
+      if vim.lsp.document_color and vim.lsp.document_color.enable then
+        vim.lsp.document_color.enable(true, bufnr, { style = 'background' })
+      end
+
       opts.desc = 'Run Flutter project'
       vim.keymap.set('n', '<leader>j', function()
         if string.match(vim.fn.getcwd(), 'miio') then
@@ -109,12 +116,9 @@ return {
       experimental = { lsp_derive_paths = true },
       widget_guides = { enabled = true, debug = true },
       lsp = {
-        color = {
-          enabled = true,
-          background = true,
-          background_color = { r = 19, g = 17, b = 24 },
-          virtual_text = false,
-        },
+        -- `color` is intentionally omitted: plugin-managed document colors are
+        -- deprecated on Neovim 0.12+. Handled by vim.lsp.document_color in
+        -- On_attach above.
         settings = {
           showTodos = true,
           renameFilesWithClasses = 'prompt',
