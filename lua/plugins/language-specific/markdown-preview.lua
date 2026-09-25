@@ -37,6 +37,7 @@ return {
         vim.opt_local.number = false
         vim.g.mkdp_markdown_css = vim.fn.expand('~/.config/nvim/css/github_dark.css')
         vim.g.mkdp_highlight_css = vim.fn.expand('~/.config/nvim/css/dracula_hl.css')
+        ---@diagnostic disable-next-line: different-requires
         require('lazy').load({ plugins = { 'markdown-preview.nvim' } })
       end,
     })

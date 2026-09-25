@@ -1,7 +1,10 @@
 require('core.utils')
 return {
   'nvim-telescope/telescope.nvim',
-  branch = '0.1.x',
+  -- `master` (not the stale `0.1.x`) uses Neovim's core `vim.treesitter` API for
+  -- preview highlighting. `0.1.x` still calls the removed
+  -- `nvim-treesitter.parsers.ft_to_lang`, which crashes against treesitter `main`.
+  branch = 'master',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
